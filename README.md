@@ -3,11 +3,6 @@ Documentation of the team assignments, procedures and policies of the TRFA organ
 
 **DO NOT INCLUDE ANY SENSITIVE INFORMATION**
 
-This repo maintained by [Cenay Nailor](https://www.cenaynailor.com/)
-
-## Table of Contents
- 
-
 ## Table of Contents
 We will be discussing and documenting these elements
 
@@ -20,3 +15,5 @@ We will be discussing and documenting these elements
 
 ## Production Notes
  * Each time the production environment is created, run the **php artisan config:cache** to create an in memory cache of the configuration settings. 
+
+This repo maintained by [Cenay Nailor](https://www.cenaynailor.com/)
