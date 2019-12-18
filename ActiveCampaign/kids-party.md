@@ -183,7 +183,7 @@ _Visual representation of the automation:_
        * NO: End -> Exit
 
 _Visual representation of the automation:_ 
-![Kids Party / Init](/doco/img/kids-party-init.jpg)
+![Kids Party / Init](/img/kids-party-init.jpg)
 
 ### Kids Party / Confirmation Open Nag
 
