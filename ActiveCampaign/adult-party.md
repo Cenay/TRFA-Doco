@@ -222,7 +222,7 @@ This situation happens when the customer books an Adult Party directly from the 
     * END: -> Exit  
 
 _Screen grab of the Adult Party / Headcount Received ActiveCampaign automation_
-![Headcount Received](/doco/img/adult-party-headcount-received.jpg)
+![Headcount Received](/img/adult-party-headcount-received.jpg)
 
 
 
