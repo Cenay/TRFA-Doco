@@ -68,27 +68,26 @@ Field Trips is one of two events that use the Event Address fields in ActiveCamp
 
 # Gravity Forms: Field Trips (id: 15)
 
-| ID  | GF Field Name        | Personalization                         | GF Param     |  
-|-----|----------------------|-----------------------------------------|--------------|  
-| 2   | Name                 |                                         |              |  
-| 2.3 | First                | {Name (First):2.3}                      | first        |  
-| 2.6 | Last                 | {Name (Last):2.6}                       | last         |  
-| 3   | Email                | {Email:3}                               | email        |  
-| 5   | Position             | {Your Position:5}                       | position     |  
-| 6   | Phone                | {Phone:6}                               | phone        |  
-| 8   | Name of School       | {Name of School or Organization:8}      | school       |  
-| 9   | Address              |                                         |              |  
-| 9.1 | Address              | {Address (Street Address):9.1}          | address      |  
-| 9.3 | City                 | {Address (City):9.3}                    | city         |  
-| 9.4 | State                | {Address (State / Province):9.4}        | state        |  
-| 9.5 | Zip                  | {Address (ZIP / Postal Code):9.5}       | zip          |  
-| 10  | # of Particiapants   | {# of Participants:10}                  | participants |  
-| 11  | Age Range            | {Age Range:11}                          | ageRange     |  
-| 12  | Consent              | {Consent: 12}                           |              |  
-| 13  | Special Instructions | {Special Instructions:13}               |              |  
-| 14  | Info                 | {Info:14}                               |              |  
-| 15  | Info Type (Field Trip)| {Info Type:15} (default = Field Trips)  | type         |  
-| 16  | GF Update Status     | {GF Update Status:16}                   | 
+| ID  | GF Field Name        | Personalization                        | GF Param     |
+|-----|----------------------|----------------------------------------|--------------|
+| 2.3 | First                | {Name (First):2.3}                     | first        |
+| 2.6 | Last                 | {Name (Last):2.6}                      | last         |
+| 3   | Email                | {Email:3}                              | email        |
+| 5   | Position             | {Your Position:5}                      | position     |
+| 6   | Phone                | {Phone:6}                              | phone        |
+| 8   | Name of School       | {Name of School or Organization:8}     | school       |
+| 9.1 | Address              | {Address (Street Address):9.1}         | address      |
+| 9.3 | City                 | {Address (City):9.3}                   | city         |
+| 9.4 | State                | {Address (State / Province):9.4}       | state        |
+| 9.5 | Zip                  | {Address (ZIP / Postal Code):9.5}      | zip          |
+| 10  | # of Particiapants   | {# of Participants:10}                 | participants |
+| 11  | Age Range            | {Age Range:11}                         | ageRange     |
+| 12  | Consent              | {Consent: 12}                          |              |
+| 17  | Experience           | {Experience:17}                        | experience   |
+| 13  | Special Instructions | {Special Instructions:13}              |              |
+| 14  | Info                 | {Info:14}                              |              |
+| 15  | Info Type            | {Info Type:15} (default = Field Trips) | type         |
+| 16  | GF Update Status     | {GF Update Status:16}                  | update       |
 
 FIELD TRIP Details  
 ActiveCampaign Feed settings. Add a Contact Note (in the format shown below), insert into the Field Trips list, add the tag (Field Trip . Details . Received)  
@@ -113,9 +112,11 @@ Age Range: {Age Range:11}
 Special Instructions: {Special Instructions:13}  
 
 # Links For Testing 
+Add &update=true to the end to see the effects of an updated link  
+
 >_Links to test the form:_  
 **Test Data Embedded Version**  
-https://therealfoodacademy.com/field-trips-oxygen/?first=Cenay&last=Nailor&email=cenay@cenaynailor.com&phone=9289781919&position=Administrator&school=School+Of+Hard+Knocks&address=7833+E+Main&city=Miami&state=FL&zip=33138&participants=52&ageRange=7-15
+https://therealfoodacademy.com/field-trips-oxygen/?first=Cenay&last=Nailor&email=cenay@cenaynailor.com&phone=9289781919&position=Administrator&school=School+Of+Hard+Knocks&address=7833+E+Main&city=Miami&state=FL&zip=33138&participants=52&ageRange=7-15&count=Second+Field+Trip  
 
 >**ActiveCampaign Version**  
 https://therealfoodacademy.com/field-trips-oxygen/?first=%FIRSTNAME%&last=%LASTNAME%&email=%EMAIL%&phone=%PHONE%&position=%POSITION%&school=%SCHOOL_NAME%&address=%ADDRESS_1%&city=%CITY%&state=%STATE%&zip=%ZIP%&participants=%FIELD_TRIP_PARTICIPANT_1%&ageRange=%FIELD_TRIP_AGE_RANGE_1%  
