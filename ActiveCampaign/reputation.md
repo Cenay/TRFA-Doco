@@ -29,4 +29,4 @@ This is the text representation of the automation steps and logic for the Reputa
   * END: -> Exit
 
 _Screen grab of the Reputation Automation_
-![Reputation Automation](/doco/img/reputation.jpg)
+![Reputation Automation](/img/reputation.jpg)

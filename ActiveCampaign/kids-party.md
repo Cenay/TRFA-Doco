@@ -146,7 +146,7 @@ We now need a step _before_ our initial steps since they might be booking via Bo
      * END: -> Exit
 
 _Visual representation of the automation:_ 
-![Kids Party / Nag For Details](/doco/img/kids-party-nag-for-details.jpg)
+![Kids Party / Nag For Details](/img/kids-party-nag-for-details.jpg)
 
 
 ### Kids Party / Init
