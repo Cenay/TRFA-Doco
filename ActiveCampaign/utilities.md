@@ -69,7 +69,7 @@ https://trfaapi.com/v3/class/summercamps
    * No -> END: -> Exit
 
 _Visual of the automation_  
-![Adult Party Automation](/doco/img/adult-party-push-to-bookeo.jpg)
+![Adult Party Automation](/img/adult-party-push-to-bookeo.jpg)
 
 ### Kids Party / Push Info To Bookeo
  * TRIGGER: Field change for either (Kids Party Info 1) or (Kids Party Final 1)
@@ -78,7 +78,7 @@ _Visual of the automation_
    * No -> END: -> Exit
 
 _Visual of the automation_  
-![Kids Party Automation](/doco/img/kids-party-push-to-bookeo.jpg)
+![Kids Party Automation](/img/kids-party-push-to-bookeo.jpg)
 
 ### Field Trips / Push Info To Bookeo
  * TRIGGER: Field change for either (Field Trip Info 1) or (Field Trip Final 1)
@@ -87,7 +87,7 @@ _Visual of the automation_
    * No -> END: -> Exit
 
 _Visual of the automation_  
-![Field Trip Automation](/doco/img/field-trip-push-to-bookeo.jpg)
+![Field Trip Automation](/img/field-trip-push-to-bookeo.jpg)
 
 ### Summer Camp / Push Info To Bookeo
  * TRIGGER: Field change for (1st Week)
@@ -96,7 +96,7 @@ _Visual of the automation_
    * No -> END: -> Exit
 
 _Visual of the automation_  
-![Summer Camp Automation](/doco/img/summer-camp-push-to-bookeo.jpg)
+![Summer Camp Automation](/img/summer-camp-push-to-bookeo.jpg)
 
 ### Booking History
 
