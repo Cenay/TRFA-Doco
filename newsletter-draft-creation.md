@@ -18,7 +18,7 @@ The Kids version of the newsletter typically contains 3 sections.
  * Saturday Class section (Bookeo: Kids Cooking Classes)
  * Special Events section (ie: Any Winter/Summer Camps, School holiday camps, Mommy and Me events, Gingerbread House Decorating, etc) (Bookeo: Special Events)
 
-The Bookeo content should be at least 4 weeks ahead of the current date, tho that won't always be the case. This content is inserted into Bookoe by Chef Maria, and updated/formatted by Cenay.
+The Bookeo content should be at least 4 weeks ahead of the current date, tho that won't always be the case. This content is inserted into Bookeo by Chef Maria, and updated/formatted by Cenay.
 
 # Adults Newsletter
 The Adults version of the newsletter typically contains 3, but can contain up to 4 sections. The optional section will be if there are any special events that invite the adults to come play with the kids. 
