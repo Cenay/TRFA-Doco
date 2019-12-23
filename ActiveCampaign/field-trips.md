@@ -222,9 +222,9 @@ These are the various pages that are a part of the automation and flow of the Fi
        * **NO** Path: 
          * END: -> Exit
 
-
 _Visual representation of the **Field Trip / Init** automation_
-![Field Trip / Init](/img/field-trip-init.jpg)
+![Field Trip / Init](/img/field-trip-init-1.jpg)
+![Field Trip / Init](/img/field-trip-init-2.jpg)
 
 
 ## Field Trip / Confirmation Open Nag
@@ -255,7 +255,8 @@ _Visual representation of the **Field Trip / Init** automation_
    * **NO** Path: END: -> Exit  
 
 _Visual representation of the **Field Trip / Confirmation Open Nag** automation_
-![Field Trip Confirmation Open Nag](/img/field-trip-confirmation-open-nag.jpg)
+![Field Trip Confirmation Open Nag](/img/field-trip-confirmation-open-nag-1.jpg)
+![Field Trip Confirmation Open Nag](/img/field-trip-confirmation-open-nag-2.jpg)
 
 ## Field Trip / Push To Bookeo
  * TRIGGER: Field Trip Info 1 content changes (updated)
@@ -271,7 +272,7 @@ _Visual representation of the **Field Trip / Push To Bookeo** automation_
 
 ## Field Trip / Headcount Reminder
  * TRIGGER: 4 days before (Field Trip Date 1)
- * IF/ELSE: Already has tag (Field trip . Start Remidner Sequence)
+ * IF/ELSE: Already has tag (Field trip . Start Reminder Sequence)
    * **YES** Path -> End -> Exit
    * **NO** Path:
      * TAG+: (Field Trip . Start Remidner Sequence)
@@ -296,7 +297,9 @@ _Visual representation of the **Field Trip / Push To Bookeo** automation_
        * **NO** Path: END -> Exit
 
 _Visual representation of the **Field Trip / Headcount Reminder** automation_
-![Field Trip / Headcount Reminder](/img/field-trip-headcount-reminder.jpg)
+![Field Trip / Headcount Reminder](/img/field-trip-headcount-reminder-1.jpg)
+![Field Trip / Headcount Reminder](/img/field-trip-headcount-reminder-2.jpg)
+![Field Trip / Headcount Reminder](/img/field-trip-headcount-reminder-3.jpg)
 
 
 ## Field Trip / Request Feedback
@@ -316,8 +319,8 @@ _Visual representation of the **Field Trip / Headcount Reminder** automation_
      * END: -> Exit
 
 _Visual representation of the **Field Trip / Request Feedback** automation_
-![Field Trip / Request Feedback](/img/field-trip-request-feedback.jpg)
-
+![Field Trip / Request Feedback](/img/field-trip-request-feedback-1.jpg)
+![Field Trip / Request Feedback](/img/field-trip-request-feedback-2.jpg)
 
 ## Field Trip / Nag For Details 
 ## Field Trip / Headcount Received 
