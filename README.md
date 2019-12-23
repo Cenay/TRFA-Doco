@@ -8,7 +8,7 @@ We will be discussing and documenting these elements
 
  * Bookeo
  * InfusionSoft (_None, moving to ActiveCampaign_)
- * [ActiveCampaign](https://github.com/Cenay/TRFA-Doco/tree/master/ActiveCampaign) Setup and Automations
+ * [ActiveCampaign](https://github.com/Cenay/TRFA-Doco/tree/master/ActiveCampaign) Setup and Automations with images
  * [Newsletter Draft Creation Project](https://github.com/Cenay/TRFA-Doco/tree/master/newsletter-draft-creation.md)
  * Email Automation Requirements (_Now embedded into the ActiveCampaign section_)
  * [API Code (Laravel)](https://github.com/Cenay/TRFA-Doco/tree/master/doco/API)
