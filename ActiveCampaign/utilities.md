@@ -36,6 +36,17 @@ Needs to deal with this possibility:
  * Henry & Hugh, Eliva
  * Tallen Rogers
 
+## Booking Updated
+When items sent to the /bookings/update endpoint, we need to adjust the AC records. grab the original ('created') and the new log record ('updated'), use created to find the "date to change", update THAT date in the AC field set to match the newly updated date from 'updated' record. 
+
+Notes from meeting (10/31/2019)
+  Booking Updated in Bookeo by Admin
+   * LOG: New webhook = Updated
+   * Lookup the original (created), grab the date
+   * Determine which "set" to udpate
+   * Create contact note in the language that explains that change
+     * Party date manually updated from 11/1/2019 to 11/15/2019 by admin in Bookeo
+  * Add a tag to contact record (195: Utility . Manually Update)
 
 ### Automation: Set a tag when more than 1 kid
 ---

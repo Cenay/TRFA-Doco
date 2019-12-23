@@ -141,7 +141,7 @@ The ActiveCampaign Addon for Gravity Forms allows us to push data directly out o
 | Address (Zip)                  | > | Zip                         |
 | Info Type                      | > | Temp Name                   |
 | Info                           | > | Temp Event Info             |
-| Into Type                      | > | Temp Event Type             |
+| Info Type                      | > | Temp Event Type             |
 | GF Update Status               | > | Temp Event Update           |
 
 Insert into Field Trip List (id: 13)  
@@ -190,15 +190,149 @@ These are the various pages that are a part of the automation and flow of the Fi
 # Automation Notes
 
 ## Field Trip / Init
+ * TRIGGER: Tag applied (Field Trip . Booking Complete)
+ * GOAL: Have enough to continue
+   >(condition: has tags )  
+   Field Trip . Booking Complete  
+   Field Trip . Details . Received  
+   OR  
+   Field Trip . Bypass Init Hold  
+ * WAIT: 20 minutes
+ * IF/ELSE: Tag (Field Trip . Details . Received)
+   * **YES** Path: 
+     * LIST: Add to All Contacts
+     * SEND: Email with details and link to FAQ
+     >Links:  
+     FAQ: https://therealfoodacademy.com/frequently-asked-questions/#field-trips
+     W9: https://therealfoodacademy.com/files/W92014.pdf  
+     Cert of Ins: https://therealfoodacademy.com/files/CertificateofInsuranceforCookingwithKidsgeneral2017.pdf  
+
+     * FIRE: Field Trip / Confirmation Open Nag
+     * FIRE: Field Trip / Headcount Reminder
+     * TAG-: (Field Trip . Booking Complete)
+     * TAG-: (Field Trip . Final Headcount Provided)
+     * FIRE: Field Trip / Push To Bookeo
+     * END: -> Exit
+   * **NO** Path:  
+     * WAIT: Until contact has tag (Field Trip . Details . Received)
+     * IF/ELSE: Contact does not have the tag (Field Trip . Details . Received)
+       * **YES** Path: 
+         * SEND: Notification to TRFA
+         * END: -> Exit
+       * **NO** Path: 
+         * END: -> Exit
+
+
+_Visual representation of the **Field Trip / Init** automation_
+![Field Trip / Init](/img/field-trip-init.jpg)
+
+
+## Field Trip / Confirmation Open Nag
+ * TRIGGER: Started manually by other automations or admin
+ * WAIT: 1 day
+ * IF/ELSE: Has not opened Field Trip Confirmation of Booking  
+   * **YES** Path:
+     * SEND: Field Trip Confirmation Nag
+     >Links:  
+     FAQ: https://therealfoodacademy.com/frequently-asked-questions/#field-trips
+     W9: https://therealfoodacademy.com/files/W92014.pdf  
+     Cert of Ins: https://therealfoodacademy.com/files/CertificateofInsuranceforCookingwithKidsgeneral2017.pdf  
+
+     * WAIT: 2 days
+     * SEND: Field Trip Confirmation Nag
+     >Links:  
+     FAQ: https://therealfoodacademy.com/frequently-asked-questions/#field-trips
+     W9: https://therealfoodacademy.com/files/W92014.pdf  
+     Cert of Ins: https://therealfoodacademy.com/files/CertificateofInsuranceforCookingwithKidsgeneral2017.pdf  
+
+     * WAIT: 2 days
+     * GOAL: Has opened either confirmation email
+     * IF/ELSE: Has opened either confirmation email
+       * YES Path: END: -> Exit
+       * NO Path: 
+         * SEND: Notification email to TRFA
+         * END: -> Exit
+   * **NO** Path: END: -> Exit  
+
+_Visual representation of the **Field Trip / Confirmation Open Nag** automation_
+![Field Trip Confirmation Open Nag](/img/field-trip-confirmation-open-nag.jpg)
+
+## Field Trip / Push To Bookeo
+ * TRIGGER: Field Trip Info 1 content changes (updated)
+ * IF/ELSE: (Field Trip Info 1) is not blank
+   * **YES** Path: 
+     * WEBHOOK: https://trfaapi.com/v3/class/fieldtrip 
+     * END: -> Exit
+   * **NO** Path: END -> Exit
+
+_Visual representation of the **Field Trip / Push To Bookeo** automation_
+![Field Trip Push To Bookeo](/img/field-trip-push-to-bookeo.jpg)
+
 
 ## Field Trip / Headcount Reminder
+ * TRIGGER: 4 days before (Field Trip Date 1)
+ * IF/ELSE: Already has tag (Field trip . Start Remidner Sequence)
+   * **YES** Path -> End -> Exit
+   * **NO** Path:
+     * TAG+: (Field Trip . Start Remidner Sequence)
+     * WAIT: Until 3 days before (Field Trip Date 1)
+     * SEND: Request Headcount email
+      >Links:  
+      https://therealfoodacademy.com/field-trip-final-headcount-and-details/?first=%FIRSTNAME%&last=%LASTNAME%&email=%EMAIL%&phone=%PHONE%&position=%POSITION%&school=%SCHOOL_NAME%&address=%ADDRESS_1%&city=%CITY%&state=%STATE%&zip=%ZIP%&participants=%PARTICIPANTS_1%&guests=%FIELD_TRIP_FINAL_1%&ageRange=%FIELD_TRIP_AGE_RANGE_1%&update=true  
+     * WAIT: Until 2 days before (Field Trip Date 1)
+     * SEND: Request Headcount email
+      >Links:  
+      https://therealfoodacademy.com/field-trip-final-headcount-and-details/?first=%FIRSTNAME%&last=%LASTNAME%&email=%EMAIL%&phone=%PHONE%&position=%POSITION%&school=%SCHOOL_NAME%&address=%ADDRESS_1%&city=%CITY%&state=%STATE%&zip=%ZIP%&participants=%PARTICIPANTS_1%&guests=%FIELD_TRIP_FINAL_1%&ageRange=%FIELD_TRIP_AGE_RANGE_1%&update=true  
+     * WAIT: Until 1 days before (Field Trip Date 1)
+     * SEND: Request Headcount email
+      >Links:  
+      https://therealfoodacademy.com/field-trip-final-headcount-and-details/?first=%FIRSTNAME%&last=%LASTNAME%&email=%EMAIL%&phone=%PHONE%&position=%POSITION%&school=%SCHOOL_NAME%&address=%ADDRESS_1%&city=%CITY%&state=%STATE%&zip=%ZIP%&participants=%PARTICIPANTS_1%&guests=%FIELD_TRIP_FINAL_1%&ageRange=%FIELD_TRIP_AGE_RANGE_1%&update=true  
+     * GOAL: We got the tag (Field Trip . Final Headcount Provided)
+     * TAG-: (Field Trip . Start Remidner Sequence)
+     * IF/ELSE: (Field Trip Final 1) is blank
+       * **YES** Path:
+         * SEND: Notification email to TRFA
+         * END: -> Exit
+       * **NO** Path: END -> Exit
 
-## Field Trip / Nag To Book 
+_Visual representation of the **Field Trip / Headcount Reminder** automation_
+![Field Trip / Headcount Reminder](/img/field-trip-headcount-reminder.jpg)
 
-## Field Trip / Nag For Details 
-
-## Field Trip / Headcount Received 
 
 ## Field Trip / Request Feedback
+ * TRIGGER: It's the date of the Field Trip Date 1
+ * IF/ELSE: Tag exists (Field Trip . Feedback . Provided)
+   * **YES** Path: -> Exit
+   * **NO** Path: 
+     * TAG+: (Field Trip . Feedback . Requested)
+     * SEND: Email requesting feedback
+       >Links:  
+        https://therealfoodacademy.com/feedback-on-field-trips/?first=%FIRSTNAME%&last=%LASTNAME%&email=%EMAIL%
+     * WAIT: 3 days
+     * SEND: 2nd email requesting feedback
+       >Links:  
+        https://therealfoodacademy.com/feedback-on-field-trips/?first=%FIRSTNAME%&last=%LASTNAME%&email=%EMAIL%
+     * TAG-: (Field Trip . Feedback . Requested)
+     * END: -> Exit
 
+_Visual representation of the **Field Trip / Request Feedback** automation_
+![Field Trip / Request Feedback](/img/field-trip-request-feedback.jpg)
+
+
+## Field Trip / Nag For Details 
+## Field Trip / Headcount Received 
 ## Field Trip / FU Next Year
+
+# Field Trip Final Headcount (id: 16)
+Gravity Forms "edit" link  
+https://therealfoodacademy.com/field-trip-final-headcount-and-details/?first={Name (First):2.3}&last={Name (Last):2.6}&email={Email:3}&phone={Phone:6}&position={Your Position:5}&school={Name of School or Organization:8}&address={Address (Street Address):9.1}&city={Address (City):9.3}&state={Address (State / Province):9.4}&zip={Address (ZIP / Postal Code):9.5}&participants={Participants:19}&guests={Final Headcount:10}&ageRange={Age Range:11}&update=true
+
+ActiveCampaign Headcount Update Link (testing)  
+https://therealfoodacademy.com/field-trip-final-headcount-and-details/?first=%FIRSTNAME%&last=%LASTNAME%&email=%EMAIL%&phone=%PHONE%&position=%POSITION%&school=%SCHOOL_NAME%&address=%ADDRESS_1%&city=%CITY%&state=%STATE%&zip=%ZIP%&participants=%PARTICIPANTS_1%&guests=%FIELD_TRIP_FINAL_1%&ageRange=%FIELD_TRIP_AGE_RANGE_1%&update=true  
+
+Testing Real Link:  
+https://therealfoodacademy.com/field-trip-final-headcount-and-details/?first=Cenay&last=Nailor&email=cenay@cenaynailor.com&phone=9289781919&position=Administrator&school=Miami+Dade+Middle+School&address=8832+W+South+Beach&city=Miami&state=Florida&zip=33138&participants=55&guests=43&ageRange=7-14&update=true  
+
+Testing location: 
+https://therealfoodacademy.com/find-trip-final-headcount-ac/?first=Cenay&last=Nailor&email=cenay@cenaynailor.com&phone=9289781919&position=Administrator&school=Miami+Dade+Middle+School&address=8832+W+South+Beach&city=Miami&state=Florida&zip=33138&participants=43&guests=55&ageRange=7-14&update=true  
+
