@@ -70,7 +70,7 @@ A little creative editing can also make the class description look better when i
 ## Instructions Video
 This video contains a sample of how to perform the task. Some of the things done are subjective so remember the goal is a pleasing appearance, consistant image sizes and reduced file sizes so phone users don't get upset at the download speed/time. 
 
- * Instructions: [Video Link Coming]()
+ * [Video Instructions for Project](https://cn-team-videos.s3.us-west-2.amazonaws.com/bookeo-class-editing.mp4)
 
 ## Alternatives to Photoshop
 If Photoshop isn't in your toolbox, here are some alternatives to use. 
