@@ -61,7 +61,7 @@ As chef Maria finds the images, she will place them in the shared Dropbox folder
      * Day Camp (_when it is one the school holiday's_)
 
 
-## Q&A Review
+## Quality Control Review
 Since the chef isn't a native English speaker, there are sometimes errors in her content. Review the description for grammar errors, misspellings, incorrect language usage, etc. Correct if it's clear what it should be. Notify me if it's "feels wrong" but you are unsure how to correct it. 
 
 A little creative editing can also make the class description look better when it wraps just a couple of words to below the image. If you can edit the content without changing the "flavor" of her description, do so. 
