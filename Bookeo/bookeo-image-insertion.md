@@ -63,7 +63,7 @@ bookeo-valentines-evening
      * Adult Day
      * Adult Evening
      * Day Camp (_when it is one the school holiday's_)
- * Just above the menu items, add a **bold** `upper case` MENU, separated by a blank line above and below. 
+ * Just above the menu items, add a **bold** `upper case` MENU, separated by a blank line above and below. (This should replace the "We'll be serving" item)
 
 ## Quality Control Review
 Since the chef isn't a native English speaker, there are sometimes errors in her content. Review the description for grammar errors, misspellings, incorrect language usage, etc. Correct if it's clear what it should be. Notify me if it's "feels wrong" but you are unsure how to correct it. 
