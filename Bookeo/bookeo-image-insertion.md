@@ -1,12 +1,23 @@
 # Bookeo Image Insertion Project 
 As the chef updates the classes in Bookeo, there is some HTML, image resizing and other clean up that needs to take place. This document will describe those steps. 
 
+## GOALS: 
+These are the overall goals of the project, and something to keep in mind as you work. 
+ 1. File size reduced (faster load times)
+ 1. Images square and 200 x 200 natively
+ 1. Description consistent in appearance
+ 1. HTTPS protocol used on all links and images (prevent mixed contents errors)
+ 1. Remove unnecessary HTML like span tags, extra bolding, etc. 
+
+
 ## Image Sizing 
 As chef Maria finds the images, she will place them in the shared Dropbox folder called /TRFA Website Files/Bookeo Images in either the adult or kids subfolder. Each image should be named the same as the class. 
+
 
  * Pull the images to your computer
  * Create squares out of them by either cropping or enlarging. 
  * Resize the squares down (or up) to 200 x 200
+ * Resolution should be 72 ppi and saved at 80% compression.
  * Name them `bookeo-` and then the class name (_if Maria hasn't already_)
    * Samples `bookeo-fun-kitchen-gadgets.jpg` and `bookeo-kids-brunch.jpg`
  * Upload them to TRFA's site folder. (/images/)
