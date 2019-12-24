@@ -37,6 +37,10 @@ As chef Maria finds the images, she will place them in the shared Dropbox folder
    * Copy the image name from your scratch area into the CHANGEME of the image name.
    * Save the class and review for correctness
 
+bookeo-street-food
+bookeo-valentines-evening
+
+
 ## Style Rules and Edits
  * Top line is always the date
    >Format month name as `upper case`, the numeric part of the date, and then the `date modifier` as lower case, followed by the year. (ie: JANUARY 18th, 2020)
@@ -59,7 +63,7 @@ As chef Maria finds the images, she will place them in the shared Dropbox folder
      * Adult Day
      * Adult Evening
      * Day Camp (_when it is one the school holiday's_)
-
+ * Just above the menu items, add a **bold** `upper case` MENU, separated by a blank line above and below. 
 
 ## Quality Control Review
 Since the chef isn't a native English speaker, there are sometimes errors in her content. Review the description for grammar errors, misspellings, incorrect language usage, etc. Correct if it's clear what it should be. Notify me if it's "feels wrong" but you are unsure how to correct it. 
