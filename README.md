@@ -6,8 +6,9 @@ Documentation of the team assignments, procedures and policies of the TRFA organ
 ## Table of Contents
 We will be discussing and documenting these elements
 
- * Bookeo
- * InfusionSoft (_None, moving to ActiveCampaign_)
+ * [Bookeo API Reference](https://www.bookeo.com/apiref/#!/Customers)
+ * [ActiveCampaign API Reference](https://developers.activecampaign.com/reference)
+ * [Import from InfusionSoft](https://github.com/Cenay/TRFA-Doco/tree/master/ActiveCampaign/import-from-infusionsoft.md)
  * [ActiveCampaign](https://github.com/Cenay/TRFA-Doco/tree/master/ActiveCampaign) Setup and Automations with images
  * [Newsletter Draft Creation Project](https://github.com/Cenay/TRFA-Doco/tree/master/newsletter-draft-creation.md)
  * [Bookeo Image Insertion](https://github.com/Cenay/TRFA-Doco/tree/master/Bookeo/bookeo-image-insertion.md)

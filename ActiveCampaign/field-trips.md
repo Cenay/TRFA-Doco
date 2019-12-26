@@ -127,22 +127,24 @@ https://therealfoodacademy.com/field-trips-oxygen/?first={Name (First):2.3}&last
 # ActiveCampaign Push To Custom Fields  
 The ActiveCampaign Addon for Gravity Forms allows us to push data directly out of the form and into fields in ActiveCampaign. We can also set tags, and apply the customer updates to a specific list. If the customer already exists, the addon will just update the existing record.  
 
-| Form Field                     | > | ActiveCampaign Custom Field |
-| -------------------------------|---|-----------------------------| 
-| Email                          | > | Email                       |
-| Name (First)                   | > | First Name                  |
-| Name (Last)                    | > | Last Name                   |
-| Phone                          | > | Phone Number                |
-| Name of School or Organization | > | School or Organization      |
-| Your Position                  | > | Position                    |
-| Address (Address)              | > | Address 1                   | 
-| Address (City)                 | > | City                        |
-| Address (State)                | > | State                       |
-| Address (Zip)                  | > | Zip                         |
-| Info Type                      | > | Temp Name                   |
-| Info                           | > | Temp Event Info             |
-| Info Type                      | > | Temp Event Type             |
-| GF Update Status               | > | Temp Event Update           |
+| ActiveCampaign Custom Field | > | Form Field                     | > | 
+|-----------------------------| > | -------------------------------|---|
+| Email                       | > | Email                          | > | 
+| First Name                  | > | Name (First)                   | > | 
+| Last Name                   | > | Name (Last)                    | > | 
+| Phone Number                | > | Phone                          | > | 
+| School or Organization      | > | Name of School or Organization | > | 
+| Position                    | > | Your Position                  | > | 
+| Address 1                   | > | Address (Address)              | > | 
+| City                        | > | Address (City)                 | > | 
+| State                       | > | Address (State)                | > | 
+| Zip                         | > | Address (Zip)                  | > | 
+| Field Trip Count            | > | Experience                     | > | 
+| Temp Name                   | > | Info Type                      | > | 
+| Temp Event Info             | > | Info                           | > | 
+| Temp Event Type             | > | Info Type                      | > | 
+| Temp Event Update           | > | GF Update Status               | > | 
+
 
 Insert into Field Trip List (id: 13)  
 Add Tag: (Field Trip . Details . Received)  
