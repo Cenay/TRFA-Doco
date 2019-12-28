@@ -105,8 +105,7 @@ Event Info:
 -----------------------  
 School/Org: {Name of School or Organization:8}  
 Address:  
-{Event Address (Street Address):9.1}  
-{Event Address (City):9.3}, {Event Address (State / Province):9.4}  {Event Address (ZIP / Postal Code):9.5}  
+{Event Address (Street Address):9.1}, {Event Address (City):9.3}, {Event Address (State / Province):9.4}  {Event Address (ZIP / Postal Code):9.5}  
 Participants: {# of Participants:10}  
 Age Range: {Age Range:11}  
 Special Instructions: {Special Instructions:13}  
@@ -127,23 +126,23 @@ https://therealfoodacademy.com/field-trips-oxygen/?first={Name (First):2.3}&last
 # ActiveCampaign Push To Custom Fields  
 The ActiveCampaign Addon for Gravity Forms allows us to push data directly out of the form and into fields in ActiveCampaign. We can also set tags, and apply the customer updates to a specific list. If the customer already exists, the addon will just update the existing record.  
 
-| ActiveCampaign Custom Field | > | Form Field                     | > | 
-|-----------------------------| > | -------------------------------|---|
-| Email                       | > | Email                          | > | 
-| First Name                  | > | Name (First)                   | > | 
-| Last Name                   | > | Name (Last)                    | > | 
-| Phone Number                | > | Phone                          | > | 
-| School or Organization      | > | Name of School or Organization | > | 
-| Position                    | > | Your Position                  | > | 
-| Address 1                   | > | Address (Address)              | > | 
-| City                        | > | Address (City)                 | > | 
-| State                       | > | Address (State)                | > | 
-| Zip                         | > | Address (Zip)                  | > | 
-| Field Trip Count            | > | Experience                     | > | 
-| Temp Name                   | > | Info Type                      | > | 
-| Temp Event Info             | > | Info                           | > | 
-| Temp Event Type             | > | Info Type                      | > | 
-| Temp Event Update           | > | GF Update Status               | > | 
+| ActiveCampaign Custom Field | > | Form Field                     | 
+|-----------------------------|---| -------------------------------| 
+| Email                       | > | Email                          | 
+| First Name                  | > | Name (First)                   | 
+| Last Name                   | > | Name (Last)                    | 
+| Phone Number                | > | Phone                          | 
+| School or Organization      | > | Name of School or Organization | 
+| Position                    | > | Your Position                  | 
+| Address 1                   | > | Address (Address)              | 
+| City                        | > | Address (City)                 | 
+| State                       | > | Address (State)                | 
+| Zip                         | > | Address (Zip)                  | 
+| Field Trip Count            | > | Experience                     | 
+| Temp Name                   | > | Info Type                      | 
+| Temp Event Info             | > | Info                           | 
+| Temp Event Type             | > | Info Type                      | 
+| Temp Event Update           | > | GF Update Status               | 
 
 
 Insert into Field Trip List (id: 13)  
@@ -185,8 +184,9 @@ Update field trip details -> https://trfaapi.com/v3/util/url/field-trips/%SUBSCR
 # LINKS
 These are the various pages that are a part of the automation and flow of the Field Trip Process.  
 
-[Oxygen Landing Page](https://therealfoodacademy.com/field-trips/)  
-[Oxygen Details Form](https://therealfoodacademy.com/field-trips-oxygen/)  <- Will be inserted into the live page at https://therealfoodacademy.com/field-trips/  
+[Landing Page](https://therealfoodacademy.com/field-trips/)  
+[Details Form](https://therealfoodacademy.com/field-trips-details/) 
+[Field Trip Final Headcount]()
 [Bookeo Booking Form](https://bookeo.com/cookingwithkidsmiami?type=2147RMYUM147550F88EC)  
 
 # Automation Notes
@@ -333,11 +333,13 @@ Gravity Forms "edit" link
 https://therealfoodacademy.com/field-trip-final-headcount-and-details/?first={Name (First):2.3}&last={Name (Last):2.6}&email={Email:3}&phone={Phone:6}&position={Your Position:5}&school={Name of School or Organization:8}&address={Address (Street Address):9.1}&city={Address (City):9.3}&state={Address (State / Province):9.4}&zip={Address (ZIP / Postal Code):9.5}&participants={Participants:19}&guests={Final Headcount:10}&ageRange={Age Range:11}&update=true
 
 ActiveCampaign Headcount Update Link (testing)  
-https://therealfoodacademy.com/field-trip-final-headcount-and-details/?first=%FIRSTNAME%&last=%LASTNAME%&email=%EMAIL%&phone=%PHONE%&position=%POSITION%&school=%SCHOOL_NAME%&address=%ADDRESS_1%&city=%CITY%&state=%STATE%&zip=%ZIP%&participants=%PARTICIPANTS_1%&guests=%FIELD_TRIP_FINAL_1%&ageRange=%FIELD_TRIP_AGE_RANGE_1%&update=true  
+https://therealfoodacademy.com/field-trip-final-headcount-and-details/?first=%FIRSTNAME%&last=%LASTNAME%&email=%EMAIL%&phone=%PHONE%&position=%POSITION%&school=%SCHOOL_NAME%&address=%ADDRESS_1%&city=%CITY%&state=%STATE%&zip=%ZIP%&participants=%FIELD_TRIP_PARTICIPANTS_1%&guests=%FIELD_TRIP_FINAL_1%&ageRange=%FIELD_TRIP_AGE_RANGE_1%&update=true  
 
 Testing Real Link:  
 https://therealfoodacademy.com/field-trip-final-headcount-and-details/?first=Cenay&last=Nailor&email=cenay@cenaynailor.com&phone=9289781919&position=Administrator&school=Miami+Dade+Middle+School&address=8832+W+South+Beach&city=Miami&state=Florida&zip=33138&participants=55&guests=43&ageRange=7-14&update=true  
 
 Testing location: 
 https://therealfoodacademy.com/find-trip-final-headcount-ac/?first=Cenay&last=Nailor&email=cenay@cenaynailor.com&phone=9289781919&position=Administrator&school=Miami+Dade+Middle+School&address=8832+W+South+Beach&city=Miami&state=Florida&zip=33138&participants=43&guests=55&ageRange=7-14&update=true  
+
+# Testing - Video
 
