@@ -90,8 +90,8 @@ Booking Italian: https://therealfoodacademy.com/book-a-cooking-party-italian-cui
 Headcount: https://therealfoodacademy.com/cooking-party-final-headcount-and-instructions/  
 
 **New**  
-Adult Party: https://therealfoodacademy.com/adult-cooking-parties-in-miami-new/  
-Business Party:   
+Adult Party: https://therealfoodacademy.com/cooking-parties-in-miami/  
+Business Party: https://therealfoodacademy.com/cooking-parties-for-businesses/  
 Booking Form: https://therealfoodacademy.com/provide-private-party-details/?menu=Latin+Cuisine  
 Headcount: https://therealfoodacademy.com/adult-party-final-headcount/  
 
