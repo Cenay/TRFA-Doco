@@ -3,7 +3,7 @@ Bookeo ID: 47
 Bookeo Product ID: 214EWHUMF1491EC82C71  
 Bookeo Custom Field (Details): 214EWHUMF1491EC82C71_4J4AMMPP 
 
-### Requirements
+## Requirements
 Adult's and businesses can book a party with TRFA, selecting any one of (currently 3) 5 different cuisines. This starts the process and will insert the client into ActiveCampaign if not found, add them to the Adult Party list, and then tag them to await the API call that indicates the completion of the $200 booking deposit.  
  
 ## Current Process
@@ -19,8 +19,8 @@ The process (for the customer) is in this order:
 
 Gravity Form located here:
 ---
-https://therealfoodacademy.com/provide-private-party-details/?menu=Asian+Cuisine
-Where the ?menu=Asian+Cuisine or Latin+Cuisine or Italian+Cuisine as selected on the book an adult party form from the screen prior.   
+https://therealfoodacademy.com/provide-private-party-details/?menu=Asian+Cuisine  
+Where the `?menu=Asian+Cuisine` or `?Latin+Cuisine` or `?Italian+Cuisine` as selected on the book an adult party form from the screen prior.   
 
 Form submission should redirect to the Bookeo page (widget) as defined here: https://bookeo.com/cookingwithkidsmiami?type=214EWHUMF1491EC82C71  
 
@@ -39,6 +39,29 @@ Bookeo Custom field (Details):
 
 ## API
 The Bookeo to API should send the customer record (or update existing) with Party date and time to appropriate field (Adult Party 1 set or Adult Party 2 set). Should move 2 up to 1 if the new date is BEFORE the original. Should not insert into date 2 if the date 1 has already passed. (Use Date 1 instead after bubbling up the info). 
+
+## Format Of Push To Bookeo Content
+The adult party details that needs to be pushed to Bookeo via the webhook `https://trfaapi.com/v3/class/adultsparty` is below. 
+
+```
+Party Info: Adult Party - Latin Cuisine
+-------------------------------
+Guests: 5 (Estimated)
+Occasion: Friends Get Together
+Wine Option: Silver Tier
+Beer Option: None
+
+LATIN Cuisine
+--------------------------------
+Salad: Mojito Tropical Salad
+Appetizer: Seafood Causa with Huancaina Sauce
+Entree: Lomo Saltado
+Dessert: Pineapple Rum Cake and Ice Cream
+
+SPECIAL REQUEST
+--------------------------------
+Ignore me, more testing.
+```
 
 # Process On Final Head Count
 ActiveCampaign automations send out reminders (if no Final value present) to customers that direct them to a TRFA page that requests the Final Headcount, which should update the customers record in AC, cause the automation to fire which would update the Bookeo booking record with the new "build and push" of info.  
