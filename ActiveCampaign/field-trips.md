@@ -18,6 +18,29 @@ _QUESTION: There are four possible dates available in Field Trips. It is possibl
 # Push To Bookeo: (Field Trip Info 1)
 Webhook endpoint: https://trfaapi.com/v3/class/fieldtrip  
 
+## Format of Field Trip Info Pushed to Bookeo
+```
+Contact Info: 
+-----------------------
+Name: Cenay Nailor  
+Email: cenay@cenaynailor.com
+Phone: (928) 978-1919
+Position: Administrator
+
+Event Info:  
+-----------------------  
+School/Org: School of Hard Knocks
+Address:  
+7833 E Supai Dr, Prescott Valley, AZ 86314
+Participants: 50
+Age Range: 7-12
+
+Special Instructions: 
+----------------------
+Ignore me, these are the notes added by the customer. 
+
+```
+
 Gravity Forms creates the Temp Event data. The TempProcessing part of API (called via webhook in AC) will parse and place in the correct set of fields. There are 4 Field Trip "sets" to work with. A daily call to the "Cleanup" function will "bubble up" the dates from a higher set (ie: 3) to a lower set (ie: 2) when the date in the lower is in the past. 
 
 # ActiveCampaign Custom Field Info
@@ -92,8 +115,8 @@ Field Trips is one of two events that use the Event Address fields in ActiveCamp
 FIELD TRIP Details  
 ActiveCampaign Feed settings. Add a Contact Note (in the format shown below), insert into the Field Trips list, add the tag (Field Trip . Details . Received)  
 
+```
 Contact Info: 
-
 -----------------------
 Name: {Name (First):2.3} {Name (Last):2.6}  
 Email: {Email:3}  
@@ -101,7 +124,6 @@ Phone: {Phone:6}
 Position: {Your Position:5}  
 
 Event Info:  
-
 -----------------------  
 School/Org: {Name of School or Organization:8}  
 Address:  
@@ -109,6 +131,8 @@ Address:
 Participants: {# of Participants:10}  
 Age Range: {Age Range:11}  
 Special Instructions: {Special Instructions:13}  
+
+```
 
 # Links For Testing 
 Add &update=true to the end to see the effects of an updated link  
