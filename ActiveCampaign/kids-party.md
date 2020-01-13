@@ -115,6 +115,22 @@ IF the booking is completed, the API updates the record to add the new tags (see
 # Automation Notes
 We now need a step _before_ our initial steps since they might be booking via Bookeo _before_ they complete the party forms. This will be true when they stumble upon the calendar items and when Art begins his "Facebook Booking" campaign.  
 
+# Notifications Sent
+When final headcount is received, send this notification to Art and Maria (Cenay)
+
+**Subject line:**  
+Kids Party Final Headcount received for %FIRSTNAME%  %LASTNAME% of %KIDS_PARTY_FINAL_1%  
+
+**Body**
+```
+%FIRSTNAME%  %LASTNAME% just submitted their final headcount of %KIDS_PARTY_FINAL_1% for the party planned on %KIDS_PARTY_DATE_1% at %KIDS_PARTY_TIME_1%. 
+
+The details of their party: 
+
+%KIDS_PARTY_INFO_1%
+```
+
+
 ### Kids Party / Nag For Details
 
 ---

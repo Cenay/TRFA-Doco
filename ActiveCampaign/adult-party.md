@@ -43,8 +43,14 @@ The Bookeo to API should send the customer record (or update existing) with Part
 ## Format Of Push To Bookeo Content
 The adult party details that needs to be pushed to Bookeo via the webhook `https://trfaapi.com/v3/class/adultsparty` is below. 
 
+>Updated: Added new line to top, space between the date/time and the "type", remove the "Party Info:" from the heading, make all headers Title case.  (SPECIAL request to match the way you did it on the Cuisine line)
+
 ```
-Party Info: Adult Party - Latin Cuisine
+(new line)
+Date: 99/99/9999
+Time: 7:00pm
+(new line)
+Adult Party - Latin Cuisine
 -------------------------------
 Guests: 5 (Estimated)
 Occasion: Friends Get Together
@@ -58,7 +64,7 @@ Appetizer: Seafood Causa with Huancaina Sauce
 Entree: Lomo Saltado
 Dessert: Pineapple Rum Cake and Ice Cream
 
-SPECIAL REQUEST
+SPECIAL Request
 --------------------------------
 Ignore me, more testing.
 ```
@@ -118,8 +124,23 @@ Business Party Info that Differs
 # Automation Notes
 This is the text representation of the automation steps and logic for the Adult Party sequences. The process is exactly the same for the Business Party. 
 
+# Notifications Sent
+When final headcount is received, send this notification to Art and Maria (Cenay)
 
-### Adult Party / Init 
+**Subject line:**  
+Adult Party Final Headcount received for %FIRSTNAME%  %LASTNAME% of %ADULT_PARTY_FINAL_1%  
+
+**Body**
+```
+%FIRSTNAME% %LASTNAME% just submitted their final headcount of %ADULTS_PARTY_FINAL_1% for the party planned on %ADULT_PARTY_DATE_1% at %ADULT_PARTY_TIME_1%. 
+
+The details of their party: 
+
+%ADULT_PARTY_INFO_1%
+```
+
+
+# Adult Party / Init 
  * TRIGGER: Tag: (Adult Party . Booking Complete) added by API
  * SEND: Email to confirm the booking  
  * LIST: Subscribe customer to list "All Contacts"     
@@ -127,9 +148,7 @@ This is the text representation of the automation steps and logic for the Adult 
  * TAG-: Adult Party . Booking Complete (resets for next booking)  
  * END: -> Exit automation  
 
-### Adult Party / Nag To Book
-
----
+# Adult Party / Nag To Book
 This situation happens when the customer completes the Adult Party form, and does not then book the date/time through Bookeo. This will ask for a completion twice before giving up.  
 
   * TRIGGER: Tag (Adult Party . Details Received) added (comes from GF)  
@@ -154,9 +173,7 @@ This situation happens when the customer completes the Adult Party form, and doe
     * No -> END: -> Exit  
   *  END: -> Exit automation  
 
-### Adult Party / Nag For Details
-
----
+# Adult Party / Nag For Details
 This situation happens when the customer books an Adult Party directly from the Bookeo widget or from the Facebook Bookeo widget, without completing the birthday party selection first. 
 
  * TRIGGER: Tag added (Adult Party . Purchased) <- comes from Bookeo/API
@@ -186,7 +203,7 @@ This situation happens when the customer books an Adult Party directly from the 
      * END: -> Exit
 
 
-### Adult Party / Headcount Reminder
+# Adult Party / Headcount Reminder
   * TRIGGER: Current date is 5 days before Adult Party Date 1
   * IF/ELSE -> We have (Adult Party . Start Reminder Sequence) tag
      * Yes -> Exit because contact is already in sequence
@@ -204,12 +221,12 @@ This situation happens when the customer books an Adult Party directly from the 
   * TAG-: (Adult Party . Start Reminder Sequence)
   * END: -> Exit
 
-### Adult Party / Push To Bookeo
+# Adult Party / Push To Bookeo
   * TRIGGER: None - called by Adult Party / Init 
   * WEBHOOK: https://trfaapi.com/v3/class/adultsparty
   * END: -> Exit
 
-### Adult Party / Request Feedback
+# Adult Party / Request Feedback
   * TRIGGER: Date of the Adult Party Date 1 event  
   * IF/ELSE -> We have (Adult Party . Feedback . Requested) tag  
     * Yes -> End automation (they are already here)  
@@ -228,7 +245,7 @@ This situation happens when the customer books an Adult Party directly from the 
   * TAG-: (Adult Party . Feedback . Requested)
   * END: -> Exit
 
-### Adult Party / Headcount Received
+# Adult Party / Headcount Received
   * TRIGGER: Tag (Adult Party . Final Headcount Provided) is added  
   * IF/ELSE -> Adult Party Date 1 is on or before current date plus 1 (1 day before party date)  
     * Yes -> Continue YES Path  
@@ -248,8 +265,7 @@ _Screen grab of the Adult Party / Headcount Received ActiveCampaign automation_
 ![Headcount Received](/img/adult-party-headcount-received.jpg)
 
 
-
-Adult Party / FU Next Year
+# Adult Party / FU Next Year
 
 
 # ADULT PARTY (id: 2)
@@ -284,6 +300,8 @@ italian-entree : 19 *
 italian-dessert : 20 * 
 special : 27 
 update : 33 * (default false) 
+extra-hour : 36 (qty)
+PRODUCT: extra hour : 35 (extra-hour field above tied to this field)
 
 ## Adult Party: Confirmations:  
  * Default - Redirect -> https://bookeo.com/cookingwithkidsmiami?type=214EWHUMF1491EC82C71

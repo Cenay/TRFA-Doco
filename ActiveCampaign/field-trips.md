@@ -90,6 +90,10 @@ Field Trips is one of two events that use the Event Address fields in ActiveCamp
 | 95  | Field Trip Final 4        | %FIELD_TRIP_FINAL_4%        | final        |  
 
 # Gravity Forms: Field Trips (id: 15)
+Customer provides details about their upcoming field trip event on this form.  
+>CHANGE Log:  
+{1/05/2020} Info field changed from 14 (hidden field) to 18 (paragraph field, hidden)  
+{1/10/2020} Added: Location dropbox so they can select where to hold the event.  
 
 | ID  | GF Field Name        | Personalization                        | GF Param     |
 |-----|----------------------|----------------------------------------|--------------|
@@ -99,6 +103,7 @@ Field Trips is one of two events that use the Event Address fields in ActiveCamp
 | 5   | Position             | {Your Position:5}                      | position     |
 | 6   | Phone                | {Phone:6}                              | phone        |
 | 8   | Name of School       | {Name of School or Organization:8}     | school       |
+| 19  | Location             | {Location:19}                          | location     |
 | 9.1 | Address              | {Address (Street Address):9.1}         | address      |
 | 9.3 | City                 | {Address (City):9.3}                   | city         |
 | 9.4 | State                | {Address (State / Province):9.4}       | state        |
@@ -108,29 +113,164 @@ Field Trips is one of two events that use the Event Address fields in ActiveCamp
 | 12  | Consent              | {Consent: 12}                          |              |
 | 17  | Experience           | {Experience:17}                        | experience   |
 | 13  | Special Instructions | {Special Instructions:13}              |              |
-| 14  | Info                 | {Info:14}                              |              |
+| 18  | Info                 | {Info:18} (changed from 14)            |              |
 | 15  | Info Type            | {Info Type:15} (default = Field Trips) | type         |
 | 16  | GF Update Status     | {GF Update Status:16}                  | update       |
 
-FIELD TRIP Details  
+# Active Campaign Field Trip Feed Requirements
 ActiveCampaign Feed settings. Add a Contact Note (in the format shown below), insert into the Field Trips list, add the tag (Field Trip . Details . Received)  
 
-```
-Contact Info: 
------------------------
-Name: {Name (First):2.3} {Name (Last):2.6}  
-Email: {Email:3}  
-Phone: {Phone:6}  
-Position: {Your Position:5}  
+**Field Mapping**  
+The "Feed" sends data from the form entries to the ActiveCampaign application. Since we are tracking multiple "sets" of trips, we can't send directly to the fields in ActiveCampaing or we risk overwriting an existing trip that isn't yet complete. We've created a set of temporary fields that we do push to, and let the API pick the data up, and perform conditional logic on where they will be "moved to".   
 
-Event Info:  
------------------------  
-School/Org: {Name of School or Organization:8}  
-Address:  
-{Event Address (Street Address):9.1}, {Event Address (City):9.3}, {Event Address (State / Province):9.4}  {Event Address (ZIP / Postal Code):9.5}  
-Participants: {# of Participants:10}  
-Age Range: {Age Range:11}  
-Special Instructions: {Special Instructions:13}  
+| AC Field Name          | GF Form Field Name                 |
+|------------------------|------------------------------------|
+| Email                  | {Email:3}                          |
+| First Name             | {Name (First):2.3}                 |
+| Last Name              | {Name (Last):2.6}                  |
+| Phone                  | {Phone:6}                          | 
+| School or Organization | {Name of School or Organization:8} |
+| Position               | {Your Position:5}                  | 
+| Address 1              | {Address (Street Address):9.1}     |
+| City                   | {Address (City):9.3}               |
+| State                  | {Address (State / Province):9.4}   |
+| Zip	                 | {Address (ZIP / Postal Code):9.5}  | 
+| Field Trip Count       | {Experience:17}                    | 
+| Temp Name              | {Info Type:15}                     |
+| Temp Event Info        | {Info:18}                          | 
+| Temp Event Type        | {Info Type:15}                     |
+| Temp Event Update      | {GF Update Status:16}              | 
+
+**Contact Note Construction**  
+In addition to pushing the data into the fields shown above, the "Feed" also adds a "Note" which translate into a contact level note. We use this to push in the complete "constructed" info data, an update status (true/false) and a created date. 
+
+```
+FIELD TRIP Details
+=======================
+{Info:18}
+
+Updated: {GF Update Status:16}
+```
+**Contact Tags Insertion**  
+In additional to pushing data, and building a contact note, the "feed" also adds a tag to the contact record. 
+```
+Field Trip . Details . Provided  
+```
+
+# Gravity Forms: Field Trips Final Headcount (id: 16)
+Customer provides the final headcount for their upcoming field trip event on this form.  
+>CHANGE Log:  
+{1/05/2020} Info field changed from 14 (hidden field) to 18 (paragraph field, hidden)  
+{1/10/2020} Added: Location dropbox so they can select where to hold the event.  
+
+| ID  | GF Field Name        | Personalization                        | GF Param     |
+|-----|----------------------|----------------------------------------|--------------|
+| 2.3 | First                | {Name (First):2.3}                     | first        |
+| 2.6 | Last                 | {Name (Last):2.6}                      | last         |
+| 3   | Email                | {Email:3}                              | email        |
+| 5   | Position             | {Your Position:5}                      | position     |
+| 6   | Phone                | {Phone:6}                              | phone        |
+| 8   | Name of School       | {Name of School or Organization:8}     | school       |
+| 21  | Location             | {Location:21}                          | location     |
+| 9.1 | Address              | {Address (Street Address):9.1}         | address      |
+| 9.3 | City                 | {Address (City):9.3}                   | city         |
+| 9.4 | State                | {Address (State / Province):9.4}       | state        |
+| 9.5 | Zip                  | {Address (ZIP / Postal Code):9.5}      | zip          |
+| 10  | Final Headcount      | {Final Headcount:10}                   | guests       |
+| 11  | Age Range            | {Age Range:11}                         | ageRange     |
+| 12  | Consent              | {Consent: 12}                          |              |
+| 17  | Experience           | {Experience:17}                        | experience   |
+| 13  | Special Instructions | {Special Instructions:13}              |              |
+| 18  | Allergy List         | {Allergy List:18}                      | FILE UPLOAD  |
+| 18  | Info                 | {Info:18} (changed from 14)            |              |
+| 19  | Particiapants        | {Participants:19} (hidden)             | participants |
+| 15  | Info Type            | {Info Type:15} (default = Field Trips) | type         |
+| 16  | GF Update Status     | {GF Update Status:16}                  | update       |
+
+# Active Campaign Field Trip Headcount Feed Requirements
+ActiveCampaign Feed settings. Add a Contact Note (in the format shown below), insert into the Field Trips list, add the tag (Field Trip . Final Headcount Provided)  
+
+**Field Mapping**  
+The "Feed" sends data from the form entries to the ActiveCampaign application. This feed assumes that we are working with the Field Trip 1 set, as that should be the one the automations are running for. Therefore, these push directly into the AC fields.  
+
+| AC Field Name          | GF Form Field Name                 |
+|------------------------|------------------------------------|
+| Email                  | {Email:3}                          |
+| First Name             | {Name (First):2.3}                 |
+| Last Name              | {Name (Last):2.6}                  |
+| Phone                  | {Phone:6}                          | 
+| School or Organization | {Name of School or Organization:8} |
+| Position               | {Your Position:5}                  | 
+| Address 1              | {Address (Street Address):9.1}     |
+| City                   | {Address (City):9.3}               |
+| State                  | {Address (State / Province):9.4}   |
+| Zip	                 | {Address (ZIP / Postal Code):9.5}  | 
+| Field Trip Count       | {Experience:17}                    | 
+| Temp Name              | {Info Type:15}                     |
+| Field Trip Info 1      | {Info:20}                          | 
+| Field Trip Final 1     | {Final Headcount:10}               |
+| Field Trip Participants 1 | {Participants:19}               | 
+
+**Contact Note Construction**  
+In addition to pushing the data into the fields shown above, the "Feed" also adds a "Note" which translate into a contact level note. We use this to push in the complete "constructed" info data, an update status (true/false) and a created date. 
+
+```
+FIELD TRIP Headcount Provided
+=======================
+Final Headcount:  {Final Headcount:10}
+
+{Info:20}
+
+Updated: {GF Update Status:16}
+```
+**Contact Tag Insertion**  
+In additional to pushing data, and building a contact note, the "feed" also adds a tag to the contact record. 
+```
+Field Trip . Final Headcount Provided  
+```
+
+
+## Format Of Push To Bookeo Content
+Below is a live sample of the content pushed to Bookeo (and therefore into the Google calendar description for the event)
+```
+Details: Contact Info: 
+-----------------------
+Name: Cristi Stalcup
+Email: cstalcup02@yahoo.com
+Phone: (786) 325-9358
+Position: Parent
+
+Event Info: 
+-----------------------
+School/Org: Arch-Angel Home School Group
+Address: 
+570 NE 81st Street, Miami, Florida 33138
+Participants: 40 (original count)
+Final Headcount: 35
+Age Range: 3-18
+
+Special Instructions: 
+-----------------------
+{Special Instructions:13}  
+
+Date/Time: 01/09/2020 @ 09:00 AM
+
+Final Headcount: 35
+```
+
+# Notifications
+When the final headcount is received, send this notification email to Art and Cenay
+
+**Subject line:**  
+Field Trip Final Headcount received for %FIRSTNAME%  %LASTNAME% of %FIELD_TRIP_FINAL_1%   
+
+**Body**  
+```
+%FIRSTNAME%  %LASTNAME% just submitted their final headcount of %FIELD_TRIP_FINAL_1% for the trip planned on %FIELD_TRIP_DATE_1% at %FIELD_TRIP_TIME_1%. 
+
+The details of their trip: 
+
+%FIELD_TRIP_INFO_1%
 
 ```
 
@@ -210,6 +350,7 @@ These are the various pages that are a part of the automation and flow of the Fi
 
 [Landing Page](https://therealfoodacademy.com/field-trips/)  
 [Details Form](https://therealfoodacademy.com/field-trips-details/) 
+[URL Generator Link](https://trfaapi.com/v3/util/url/field-trips/%SUBSCRIBERID%)
 [Field Trip Final Headcount]()
 [Bookeo Booking Form](https://bookeo.com/cookingwithkidsmiami?type=2147RMYUM147550F88EC)  
 
@@ -350,6 +491,18 @@ _Visual representation of the **Field Trip / Request Feedback** automation_
 
 ## Field Trip / Nag For Details 
 ## Field Trip / Headcount Received 
+ * TRIGGER: Tag added (Field Trip . Final Headcount Provided)
+ * SEND: (Notification only) Send details to Art
+ * WAIT: Until 1 day before Field Trip
+ * SEND: Reminder email to customer  
+   >Link:  
+   https://therealfoodacademy.com/frequently-asked-questions/#field-trips  
+ * TAG-: (Field Trip . Final Headcount Provided)
+ * END: -> Exit
+
+_Visual representation of the **Field Trip / Received Headcount** automation_
+![Field Trip / Received Headcount](/img/field-trip-received-headcount.jpg)
+
 ## Field Trip / FU Next Year
 
 # Field Trip Final Headcount (id: 16)
