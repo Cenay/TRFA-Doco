@@ -490,6 +490,32 @@ _Visual representation of the **Field Trip / Request Feedback** automation_
 ![Field Trip / Request Feedback](/img/field-trip-request-feedback-2.jpg)
 
 ## Field Trip / Nag For Details 
+In the event a field trip is booked via Bookeo or Facebook first, there are no details about the trip. We need that, so send them an email requesting they visit the field trip details form to complete that.  
+
+>UPDATED: 1/14/2020 -> Remove this when doco is updated TODO
+
+ * TRIGGER: Tag added (Field Trip . Purchased)
+ * WAIT: 2 hours 
+ * IF/ELSE Has tag (Field Trip . Details . Received)
+   * **YES** Path: END -> Exit
+   * **NO** Path: 
+     * SEND: Field Trip Nag for Details
+      >Links:  
+	  Field Trip Details (https://therealfoodacademy.com/field-trip-details/)  
+	 * WAIT: 2 days
+     * SEND: Field Trip Nag for Details
+      >Links:  
+	  Field Trip Details (https://therealfoodacademy.com/field-trip-details/)  
+	 * WAIT: 2 days
+	 * GOAL: Tag added (Field Trip . Details . Received)
+	 * IF/ELSE No Tag (Field Trip . Details . Received)
+	   * **YES** Path: Send AC Notification to Art
+	   * **NO** Path: End -> Exit
+	   
+_Visual representation of the **Field Trip / Nag For Details** automation_
+![Field Trip / Nag for Details](/img/field-trip-nag-for-details-1.jpg)	   
+![Field Trip / Nag for Details](/img/field-trip-nag-for-details-2.jpg)	   
+
 ## Field Trip / Headcount Received 
  * TRIGGER: Tag added (Field Trip . Final Headcount Provided)
  * SEND: (Notification only) Send details to Art

@@ -115,7 +115,7 @@ IF the booking is completed, the API updates the record to add the new tags (see
 # Automation Notes
 We now need a step _before_ our initial steps since they might be booking via Bookeo _before_ they complete the party forms. This will be true when they stumble upon the calendar items and when Art begins his "Facebook Booking" campaign.  
 
-# Notifications Sent
+## Notifications Sent
 When final headcount is received, send this notification to Art and Maria (Cenay)
 
 **Subject line:**  
@@ -123,17 +123,16 @@ Kids Party Final Headcount received for %FIRSTNAME%  %LASTNAME% of %KIDS_PARTY_F
 
 **Body**
 ```
-%FIRSTNAME%  %LASTNAME% just submitted their final headcount of %KIDS_PARTY_FINAL_1% for the party planned on %KIDS_PARTY_DATE_1% at %KIDS_PARTY_TIME_1%. 
+%FIRSTNAME% %LASTNAME% just submitted their final headcount of %KIDS_PARTY_FINAL_1% for the party planned on %KIDS_PARTY_DATE_1% at %KIDS_PARTY_TIME_1%. 
 
 The details of their party: 
 
 %KIDS_PARTY_INFO_1%
 ```
 
+# Automation Details
+## Kids Party / Nag For Details
 
-### Kids Party / Nag For Details
-
----
  * TRIGGER: Tag added (Kids Party . Purchased) <- comes from Bookeo/API
  * IF/ELSE: Contact does not have (Kids Party . Details . Received) tag
    * YES Path: 
@@ -165,18 +164,18 @@ _Visual representation of the automation:_
 ![Kids Party / Nag For Details](/img/kids-party-nag-for-details.jpg)
 
 
-### Kids Party / Init
+## Kids Party / Init
 
 ---
  * TRIGGER: Tag added (Kids Party . Booking Complete) <- API adds 
+ * WAIT: 20 minutes
  * GOAL: Hold until we have enough to start the init 
    >(condition: has tags )  
    Kids Party . Booking Complete  
    Kids Party . Details . Received  
    OR  
    Kids Party . Bypass Init Hold  
- * WAIT: 20 minutes
- * IF/ELSE: Tag exists (Kids Party . Details . Received)
+ * IF/ELSE: Tag exists (Kids Party . Details . Received) OR Kids Party Info 1 is not blank
    * YES Path:
      * LIST: Add to All Contacts
      * SEND: Email to confirm the booking
@@ -193,17 +192,17 @@ _Visual representation of the automation:_
      * FIRE: Kids Party / Push To Bookeo
      * END: -> Exit
    * NO Path: 
-     * WAIT UNTIL: Tag Kids Party . Details . Received (up to 10 days)
+     * WAIT UNTIL: Tag Kids Party . Details . Received (up to 7 days)
      * IF/ELSE: Still no (Kids Party . Details . Received) tag
        * YES: Notify TRFA staff -> Exit
        * NO: End -> Exit
 
-_Visual representation of the automation:_ 
-![Kids Party / Init](/img/kids-party-init.jpg)
+_Visual representation of the **Kids Party / Init** automation:_ 
+![Kids Party / Init](/img/kids-party-init-1.jpg)
+![Kids Party / Init](/img/kids-party-init-2.jpg)
 
-### Kids Party / Confirmation Open Nag
 
----
+## Kids Party / Confirmation Open Nag
 Customers are calling when they don't receive an email from TRFA, despite the fact we did. To remove the worry from Art, we are now testing that they OPENED the email, and if they don't, resend again, and again. If they still haven't opened, notify TRFA staff and send the link to the customer in ActiveCampaign so they can call them. 
 
  * TRIGGER: None. Push into there from the (Kids Party / Init) automation

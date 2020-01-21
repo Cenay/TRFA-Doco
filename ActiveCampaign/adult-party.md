@@ -139,16 +139,45 @@ The details of their party:
 %ADULT_PARTY_INFO_1%
 ```
 
-
-# Adult Party / Init 
+# Automations Setup
+## Adult Party / Init 
  * TRIGGER: Tag: (Adult Party . Booking Complete) added by API
- * SEND: Email to confirm the booking  
- * LIST: Subscribe customer to list "All Contacts"     
- * FIRE: Automation: Adults Party / Push Info To Bookeo (https://trfaapi.com/v3/class/adultsparty)  
- * TAG-: Adult Party . Booking Complete (resets for next booking)  
- * END: -> Exit automation  
+ * WAIT: 20 minutes
+ * GOAL: Have enough to start init sequence 
+ >(condition: has tags )  
+   Adult Party . Booking Complete  
+   Adult Party . Details . Received  
+   OR  
+   Adult Party . Bypass Init Hold 
+ 
+ * IF/ELSE (Adult Party . Details Received) OR Adult Party Info 1 not blank
+   * **YES** Path:
+     * LIST: All Contacts
+	 * SEND: Email to confirm the booking  
+	 >Link: (check out our FAQ page)  
+     https://therealfoodacademy.com/frequently-asked-questions/#adult-parties
+    
+     >Link: (update birthday party details)  
+     https://trfaapi.com/v3/util/url/adults-party/%SUBSCRIBERID% 
+	 * FIRE: Adult Party / Confirmation Open Nag
+	 * FIRE: Adult Party / Headcount Reminder
+	 * TAG-: Adult Party . Booking Complete
+	 * FIRE: Adult Party / Push Into To Bookeo (https://trfaapi.com/v3/class/adultsparty)
+	 * END: -> Exit
+   * **NO** Path:
+     * WAIT: Until Tag Adult Party . Details Received -> up to 7 days
+	 * IF/ELSE !(Adult Party . Details Received)
+	   * YES Path: 
+	     * SEND: AC Notification -> missing INFO
+		 * END: -> Exit
+	   * NO Path: END -> Exit
+	 
+_Visual representation of the **Adult Party / Init** automation:_ 
+![Adult Party / Init](/img/adult-party-init-1.jpg)
+![Adult Party / Init](/img/adult-party-init-2.jpg)
 
-# Adult Party / Nag To Book
+
+## Adult Party / Nag To Book
 This situation happens when the customer completes the Adult Party form, and does not then book the date/time through Bookeo. This will ask for a completion twice before giving up.  
 
   * TRIGGER: Tag (Adult Party . Details Received) added (comes from GF)  
@@ -193,7 +222,7 @@ This situation happens when the customer books an Adult Party directly from the 
          * GOAL: Adult Party . Details Received tag is present
          * IF/ELSE: Contact does not have Adult Party . Details Received tag
            * YES Path: 
-             * NOTIFICATION: Send TRFA email about lack of details
+             * NOTIFICATION: Send (*1) TRFA email about lack of details
              * END: -> Exit
            * NO Path: 
              * END: -> Exit
@@ -202,6 +231,27 @@ This situation happens when the customer books an Adult Party directly from the 
    * NO Path: 
      * END: -> Exit
 
+### *1 Notification Content
+From: 
+```
+Nag For Details Notification
+```  
+Subject:  
+```
+This client didn't provide adult party details after two email attempts  
+```
+
+Body: 
+```
+ATTENTION
+
+%FULLNAME% booked an Adult Party via Bookeo (or Facebook) for %ADULT_PARTY_DATE_1% at %ADULT_PARTY_TIME_1%, and then did NOT provide party details. We've emailed them twice. They need a phone call to get that info as they aren't opening emails!  
+
+Call %FULLNAME%  @  %PHONE% or email them at  <a href="mailto:%EMAIL%">%EMAIL%</a>
+```
+_Visual representation of the **Adult Party / Nag For Details** automation:_ 
+![Adult Party / Nag For Details](/img/adult-party-nag-for-details-1.jpg)
+![Adult Party / Nag For Details](/img/adult-party-nag-for-details-2.jpg)
 
 # Adult Party / Headcount Reminder
   * TRIGGER: Current date is 5 days before Adult Party Date 1
@@ -302,6 +352,7 @@ special : 27
 update : 33 * (default false) 
 extra-hour : 36 (qty)
 PRODUCT: extra hour : 35 (extra-hour field above tied to this field)
+expired: 42 (default false)
 
 ## Adult Party: Confirmations:  
  * Default - Redirect -> https://bookeo.com/cookingwithkidsmiami?type=214EWHUMF1491EC82C71
