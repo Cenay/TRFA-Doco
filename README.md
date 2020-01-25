@@ -14,6 +14,7 @@ We will be discussing and documenting these elements
  * [Bookeo Image Insertion](https://github.com/Cenay/TRFA-Doco/tree/master/Bookeo/bookeo-image-insertion.md)
  * Email Automation Requirements (_MOVED: Now embedded into the ActiveCampaign section_)
  * [API Code (Laravel)](https://github.com/Cenay/TRFA-Doco/tree/master/doco/API)
+ * [The Real Food Academy](https://github.com/Cenay/TRFA-Doco/tree/master/doco/TRFA)
 
 ## Production Notes
  * Each time the production environment is created, run the **php artisan config:cache** to create an in memory cache of the configuration settings. 
