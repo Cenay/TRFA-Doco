@@ -161,7 +161,8 @@ Field Trip . Details . Provided
 Customer provides the final headcount for their upcoming field trip event on this form.  
 >CHANGE Log:  
 {1/05/2020} Info field changed from 14 (hidden field) to 18 (paragraph field, hidden)  
-{1/10/2020} Added: Location dropbox so they can select where to hold the event.  
+{1/10/2020} Added: Location dropbox so they can select where to hold the event. 
+{1/27/2020} Added: HTML code block (GF: 20) and Hidden field expired (GF:21)
 
 | ID  | GF Field Name        | Personalization                        | GF Param     |
 |-----|----------------------|----------------------------------------|--------------|
@@ -186,6 +187,8 @@ Customer provides the final headcount for their upcoming field trip event on thi
 | 19  | Particiapants        | {Participants:19} (hidden)             | participants |
 | 15  | Info Type            | {Info Type:15} (default = Field Trips) | type         |
 | 16  | GF Update Status     | {GF Update Status:16}                  | update       |
+| 20  | HTML Code Block      | {NONE}                                 |              |
+| 21  | Expired              | {Expired:21} (default=false)           | expired      |
 
 # Active Campaign Field Trip Headcount Feed Requirements
 ActiveCampaign Feed settings. Add a Contact Note (in the format shown below), insert into the Field Trips list, add the tag (Field Trip . Final Headcount Provided)  
@@ -326,6 +329,20 @@ Insert a text element on the field trip details page in this format:
  3. Insert the customer to the Field Trip list (id: 13)
  4. Tag the customer with the initial "automation start" tag
   
+## Gravity Form Expiration Notice
+In the event the field trip info has "expired" (it's been more than 30 days since the details were added, but no actual booking has happened), add a message about why the details are not present. New hidden field (GF: 21 | param: expired)
+
+Display this HTML Message
+```
+<div class="expire-warning">
+<h3>We're sorry, but the Field Trip details you are trying to edit, have expired.</h3>
+
+<p>You will need to complete the details again. We only hold details for 30 days without a booking. You can refer to your original confirmation email for the details supplied.</p>
+<p>Thanks for understanding.</p>
+</div>
+```
+
+
 # Bookeo: 90 MINUTE FIELD TRIP TO YOUR LOCATION (id: 35)  
 >Bookeo Product ID: 2147RMYUM147550F88EC  
 Bookeo Custom Field (Details): 2147RMYUM147550F88EC_N37AFAXW  
