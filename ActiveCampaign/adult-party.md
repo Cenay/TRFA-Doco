@@ -318,41 +318,62 @@ _Screen grab of the Adult Party / Headcount Received ActiveCampaign automation_
 # Adult Party / FU Next Year
 
 
-# ADULT PARTY (id: 2)
+# Gravity Forms: ADULT PARTY (id: 2)
 >Link To Test the form with:  
 https://therealfoodacademy.com/provide-private-party-details/?first=Cenay&last=Nailor&email=cenay%40softwarethatrocks.com&phone=%28928%29+978-1919&guests=12&wine=Silver+Tier&beer=&menu=Latin+Cuisine&latin-salad=Romaine+Lettuce+Boats&latin-appetizer=Caribbean+Ceviche&latin-entree=Lomo+Saltado&latin-dessert=Flan&update=true&type=Business+Party&other=Retirement+and+Promotion&occasion=Other
 
+>Change Log:  
+{11/21/2019} Added: Two occasion fields (GF 31 and 34)
+{11/21/2019} Added: Other field (GF: 32)
+{01/04/2020} Added: Extra Time option (GF: 35, 36, 38)
+{01/20/2020} Added: Expired hidden field (GF: 42)
+{01/27/2020} Added: HTML Code block (conditional on expired=true) {GF: 43}
+
 **Adult Party: Passed parameters names and field ID's**  
-first : 1.3 {Name (First):1.3} *  
-last  : 1.6 {Name (Last):1.6} *  
-email : 2 *  
-phone : 3 *  
-type : 29 (hidden) [choices: "Adult Party", "Business Party"]
-info : 30 * (hidden) [holds party info]
-guests : 4 *
-occasion : 31 * (when type = adult party)
-occasion : 34 * (when type = business party)
-other : 32 (when they select other, this holds their answer)
-wine : 22 * 
-beer : 25 * 
-menu : 5 (drop down)
-asian-salad : 10 *
-asian-appetizer : 11 *
-asian-entree : 8 * 
-asian-dessert : 12 *
-latin-salad : 13 *
-latin-appetizer : 14 * 
-latin-entree : 15 * 
-latin-dessert : 16 * 
-italian-salad : 17
-italian-appetizer : 18 *
-italian-entree : 19 * 
-italian-dessert : 20 * 
-special : 27 
-update : 33 * (default false) 
-extra-hour : 36 (qty)
-PRODUCT: extra hour : 35 (extra-hour field above tied to this field)
-expired: 42 (default false)
+| ID  | GF Field Name        | Personalization                        | GF Param     |
+|-----|----------------------|----------------------------------------|--------------|
+| 1.3 | First                | {Name (First):1.3}                     | first        |
+| 1.6 | Last                 | {Name (Last):1.6}                      | last         |
+| 2   | Email                | {Email:2}                              | email        |
+| 3   | Phone                | {Phone:3}                              | phone        |
+| 29  | Party Type           | {Party Type:29} (Adult/Business Party) | type         |
+| 30  | Party Info           | {Info:30} (hidden)                     |              |
+| 4   | Estimated # Guests   | {Estimated # Guests:4}                 | guests       |
+| 31  | Event Occasion (Adult) | {Event Occasion: 31}                 | occasion     |
+| 34  | Event Occasion (Bus) | {Event Occasion: 34}                   | occasion     |
+| 32  | Other                | {Other:32}                             | other        |
+| 22  | Wine Addon           | {Wine Addon:22}                        | wine         |
+| 25  | Beer Addon           | {Beer Addon:25}                        | beer         |
+| 39  | Section: Menu Options| {NONE}                                 |              |
+| 5   | Choose Your Cuisine  | {Choose Your Cuisine:5}                | menu         |
+| 29  | Party Type  (hidden) | {Party Type:29} (default: Adult Party) | type         |
+| 30  | Party Info (hidden)  | {Party Info:30}                        |              |
+| 28  | HTML Code Block      | Instructions about email               |              |
+| 10  | Asian Salad          | {Asian Salad:10}                       | asian-salad  |
+| 11  | Asian Appetizer      | {Asian Appetizer:11}                   | asian-appetizer|
+| 8   | Asian Entree         | {Asian Entree:8}                       | asian-entree |
+| 12  | Asian Dessert        | {Asian Dessert:12}                     | asian-dessert|
+| 13  | Latin Salad          | {Latin Salad:10}                       | latin-salad  |
+| 14  | Latin Appetizer      | {Latin Appetizer:11}                   | latin-appetizer|
+| 15  | Latin Entree         | {Latin Entree:8}                       | latin-entree |
+| 16  | Latin Dessert        | {Latin Dessert:12}                     | latin-dessert|
+| 17  | Italian Salad        | {Italian Salad:10}                     | italian-salad  |
+| 18  | Italian Appetizer    | {Italian Appetizer:11}                 | italian-appetizer|
+| 19  | Italian Entree       | {Italian Entree:8}                     | italian-entree |
+| 16  | Italian Dessert      | {Italian Dessert:12}                   | italian-dessert|
+| 38  | Extra Time Section   |                                        |              |
+| 36  | Qty                  | {Qty:36}                               | extra-hour   |
+| 35  | Extra Hour [$250]    | {Extra Hour [$250]:35}                 |              |
+| 26  | Consent              | {Consent:26}                           |              |
+| 27  | Special Request      | {Special Request or Message: 27}       |              |
+| 33  | GF Update Status     | {GF Update Status:33}                  | update       |
+| 42  | expired              | {expired:42}                           | expired      |
+
+Notes:  
+occasion : 31 * (when type = adult party)    
+occasion : 34 * (when type = business party)  
+other : 32 (when they select other, this holds their answer)  
+
 
 ## Adult Party: Confirmations:  
  * Default - Redirect -> https://bookeo.com/cookingwithkidsmiami?type=214EWHUMF1491EC82C71
