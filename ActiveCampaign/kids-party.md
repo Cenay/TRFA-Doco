@@ -84,6 +84,10 @@ These are the various pages that are a part of the automation and flow of the ki
 Customer Starts Here:
 https://therealfoodacademy.com/book-a-cooking-birthday-party/
 
+>When the Party Info has expired (after 30 days of NOT booking), the URL Generator will push them to this link, where a notice will appear. 
+https://therealfoodacademy.com/book-a-cooking-birthday-party/?expired=1
+![Kids Party Expired Link](/img/kids-party-expired-link.jpg)
+
 They pick a cuisine and one of these is used:  
 https://therealfoodacademy.com/birthday-party-package-details-budding-chef/  
 https://therealfoodacademy.com/birthday-party-package-details-executive-chef/  
@@ -101,16 +105,28 @@ At this point, there is a record in AC, it has been tagged that we have the deta
 IF the booking is completed, the API updates the record to add the new tags (see above), add the date and time, change the person type to "Customer" and start the Kids Party / Init automation. 
 
 >UPDATE: New Automation for Kids Party / Nag To Book that will send the customer back to the party page to complete the form. The forms (all three) have to be revised to conditionally send them to either the booking page or the Thank you message, if they complete the form (first time vs again).  
-# Gravity Forms (id: )
+
+# Gravity Forms (id: 7, 8 and 9)
+There are three forms for the various kids' parties. 
+ * Kids Party - Budding Chef (id: 7)
+ * Kids Party - Executive Chef (id: 8)
+ * Kids Party - Top Chef (id: 9)
 
 ## Passed Parameter Field Names
 
- * address
+**BUDDING CHEF**
+ * first (GF: 2.2)
+ * last (GF: 2.4)
+ * email (GF: 3)
+ * phone (GF: 4)
+ * type (GF: 72 - hidden) -> contains "Kids Party"
+ 
+ THIS NEEDS COMPLETION! TODO
+ 
+ * address 
  * city
  * state
  * zip
-
-
 
 # Automation Notes
 We now need a step _before_ our initial steps since they might be booking via Bookeo _before_ they complete the party forms. This will be true when they stumble upon the calendar items and when Art begins his "Facebook Booking" campaign.  
