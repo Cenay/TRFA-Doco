@@ -15,6 +15,9 @@ Each form will need to be updated to display the expiration warning so the custo
 </div>
 ```
 
+_Visual of the expiration notice for Adult Parties_
+![Adult Party Expire Notice](/img/adult-party-expiration.jpg)
+
 ### Field Trip Warning
 ```
 <div class="expire-warning">
@@ -24,6 +27,11 @@ Each form will need to be updated to display the expiration warning so the custo
 <p>Thanks for understanding.</p>
 </div>
 ```
+
+_Visual of the expiration notice for Field Trips_
+![Field Trip Expire Notice](/img/field-trip-expiration.jpg)
+
+
 
 ### Kids Party Warning
 The kids party is a little different since the "base" url is not available to the API (all the data in info went away that would have directed us to the correct form), so the API will redirect to the base page where the party type is selected. 
@@ -50,6 +58,10 @@ if( $_REQUEST['expired'] ) { ?>
 
 <?php } ?>
 ```
+
+_Visual of the expiration notice for Kids Parties_
+![Kids Party Expire Notice](/img/kids-party-expiration.jpg)
+
 
 # Warning Styles
 The "child" theme created via a plugin (Add Assets) contains this styling for the warning box.  
