@@ -11,6 +11,38 @@ Originally written to take FareHarbor booking data and send it to InfusionSoft. 
 ## V3
 Written to take Bookeo data and send it to ActiveCampaign. As mentioned earlier, Field Trips are still being processed by V1, so for now, all the calls to V1 are being re-rerouted to V3 for those that are present in V3. 
 
+## V3 Models
+ * ActiveCampaign
+ * Bookeo
+ * Customer
+ * Logger
+ * Tag
+ * User
+ 
+
+## V3 Controllers
+ * AC To Bookeo Automation Controller
+ * Automation Controller
+ * Bookeo Controller 
+ * Bookings Controller
+ * Cleanup Controller
+ * Controller
+ * Customer Controller
+ * Home Controller
+ * Import Controller
+ * Log Controller
+ * Payments Controller
+ * Process Temp Info Controller
+ * Tags Controller
+ * Test Controller
+ * URL Generator Controller
+ * Utility Controller
+
+## V3 Traits
+ * Booking Deleted
+ * Booking History
+ * Booking Updated 
+
 
 # UPDATES
 _Good candidate for queue (?)_  
