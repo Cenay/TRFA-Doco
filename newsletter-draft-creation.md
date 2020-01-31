@@ -35,3 +35,39 @@ The Adults version of the newsletter typically contains 3, but can contain up to
 Answers:
  * Take the "info" from the Day Camp and use instead of Menu. Because this is a camp, they actually cook like 4 events with 2 - 3 items per, so the list would be really long. 
  * Adult - evening class - valentines day is the winner. Explain the pasta entry not being visible until the prior "event" is done since they reuse it. 
+ 
+# Links Used In The Newsletters
+_Send tests to:_  
+arthur@arthurcummins.com  
+cenay@cenaynailor.com  
+
+Kids Class Category  
+https://bookeo.com/cookingwithkidsmiami?category=21464M9KX13EC482C116  
+
+Special Events  
+https://bookeo.com/cookingwithkidsmiami?category=214NCYPL616DCBF5CE5E  
+
+Kids Camps (Includes all camps, weekly and daily)  
+https://bookeo.com/cookingwithkidsmiami?category=214HTHYMU13ECCE7B340  
+
+Winter Camp (Specifically)  
+https://bookeo.com/cookingwithkidsmiami?type=214PLUHFY157CE44EA78  
+
+Summer Camp (Specifically)  
+https://bookeo.com/cookingwithkidsmiami?type=214RPTHWK13ECCFB7002  
+
+Mommy and Me (Specifically)  
+https://bookeo.com/cookingwithkidsmiami?type=2147NUJWL15695777311  
+
+Adult Day Category  
+https://bookeo.com/cookingwithkidsmiami?category=214NRJC3N159AD0FB015  
+
+Adult Evening Category  
+https://bookeo.com/cookingwithkidsmiami?category=2149H3RJR159AD0999C2  
+
+Private Party (Adult)  
+https://bookeo.com/cookingwithkidsmiami?type=214EWHUMF1491EC82C71  
+
+Valentine's Day Special Event  
+https://bookeo.com/cookingwithkidsmiami?type=214T9LXXL16F35DA3BCF  
+
