@@ -19,4 +19,4 @@ We will be discussing and documenting these elements
 ## Production Notes
  * Each time the production environment is created, run the **php artisan config:cache** to create an in memory cache of the configuration settings. 
 
-This repo maintained by [Cenay Nailor](https://www.cenaynailor.com/)
+This repo maintained by [Cenay Nailor](https://www.cenaynailor.com/) with love in Prescott Valley, AZ
