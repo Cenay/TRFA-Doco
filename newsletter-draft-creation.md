@@ -7,18 +7,25 @@ The draft setup of each of the two newsletter should be completed no longer than
 
 It may be produced earlier, or done in segments as long as the final result is complete by the 24th. 
 
-## Procedures
+# Procedures
+
 
 ## Notifications
  * When Bookeo content is missing for the next period, notify Cenay
+ * When unable to complete the task on time, notify Cenay
 
-# Kids Newsletter
+## Kids Newsletter
 The Kids version of the newsletter typically contains 3 sections. 
  * Intro (the body of the email) - provided by Art/Cenay
  * Saturday Class section (Bookeo: Kids Cooking Classes)
- * Special Events section (ie: Any Winter/Summer Camps, School holiday camps, Mommy and Me events, Gingerbread House Decorating, etc) (Bookeo: Special Events)
+ * [optional] Special Events section (Bookeo: Special Events)  
+ _These can include:_  
+   * Any Winter/Summer Camps
+   * School holiday camps
+   * Mommy and Me events
+   * Gingerbread House Decorating 
 
-The Bookeo content should be at least 4 weeks ahead of the current date, tho that won't always be the case. This content is inse rted into Bookeo by Chef Maria, and updated/formatted by Cenay.
+The Bookeo content should be at least 4 weeks ahead of the current date, tho that won't always be the case. This content is inserted into Bookeo by Chef Maria, and updated/formatted by Cenay.
 
 # Adults Newsletter
 The Adults version of the newsletter typically contains 3, but can contain up to 4 sections. The optional section will be if there are any special events that invite the adults to come play with the kids. 
@@ -27,16 +34,36 @@ The Adults version of the newsletter typically contains 3, but can contain up to
  * Adult Evening Class section (Bookeo: Thursday Evening (Adult) )
  * [optional] Special Events (ie: Mommy and Me) (Bookeo: Special Events)
  
-## QUESTIONS
- * Where should "camps" go in the Kids Newsletter?
- * Where should the "time and drop off" info go for the day camps? 
+## Questions
+ 1. Where should "camps" go in the Kids Newsletter?
+ 2. Where should the "time and drop off" info go for the day camps? 
  
  
-Answers:
- * Take the "info" from the Day Camp and use instead of Menu. Because this is a camp, they actually cook like 4 events with 2 - 3 items per, so the list would be really long. 
- * Adult - evening class - valentines day is the winner. Explain the pasta entry not being visible until the prior "event" is done since they reuse it. 
+## Answers:
+ 1. Take the "info" from the Day Camp and use instead of Menu. Because this is a camp, they actually cook like 4 events with 2 - 3 items per, so the list would be really long. 
+ 2. Adult - evening class - valentines day is the winner. Explain the pasta entry not being visible until the prior "event" is done since they reuse it. 
  
 # Links Used In The Newsletters
+Images, buttons and links can be used in the newsletter to send customers to the appropriate sections of the website to purchase the classes. 
+
+### Images 
+Any images used in the newsletter should link to the class related. The location for the links can be seen in the images below.  
+
+_See #2 in the image below for the location of where to put the link_
+![Link location for images](img/image-link-location.jpg)  
+
+### Buttons
+Any buttons added to the newsletter should link to the class related. The location for the links can be seen in the images below.  
+
+_See #2 in the image below for the location of where to put the link_  
+![Link location for buttons](img/button-link-location.jpg)  
+
+### Links
+Any text links added to the newsletter should link to the class related. To create a text link, highlight the text to "link" [#1], click the link icon [#2], and then insert the HTML link in the dialog box that comes up [#3].  
+
+_See #3 in the image below for the location of where to put the link_  
+![Link location for text links](img/text-link-location.jpg)  
+
 _Send tests to:_  
 arthur@arthurcummins.com  
 cenay@cenaynailor.com  
