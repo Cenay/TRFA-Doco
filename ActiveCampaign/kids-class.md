@@ -1,12 +1,17 @@
 # Kids Class
 There are two situations we will be dealing with. The current situation with Bookeo sending the class called "SATURDAY 90 MINUTES KIDS CLASS" and the upcoming method of sending a "menu" name as a part of the class name (ie: Farm To Table - Kids Class)
 
+UPDATE: The new title tag method is now fully implemented and there should not be any new bookings for the Saturday 90 Minutes Kids Class. All current and future bookings will tag with the title of the class with the year of the date added in this form: "Farm To Table 2020"  
+
 The class menu or title will be in upper case and the class category will be in title case. Example below:
 ```
 FARM TO TABLE - Kids Class
 ```
 
 Currently V1 of the API takes data from Bookeo and inserts it into InfusionSoft, with the exception of Summer Camp, which gets redirected to the V3 endpoint and passes the payload received on the V1 endpoint.
+
+UPDATE: The API is complete and ALL events, classes, parties and field trips are now being processed by version 3 and are sending into ActiveCampaign. 
+
 
 ## Special Handling
 We have a situation we need special handling for, since we are now tracking multiple "dates" that a parent can sign a kid up for. We are now tracking up to three different dates for a single contact record, for kids class. We mark them into the fields Kids Class 1, Kids Class 2 and Kids Class 3. 
@@ -22,7 +27,7 @@ Kids Class 1: 7/22/2019 <- Date present and it is NOT the same
 Kids Class 2: 7/29/2019 <- New date goes here  
 Kids Class 3:  
 
-Kids Class 1: 6/15/2019 <- Date present and it is in the past, push 7/29/2019 over  
+Kids Class 1: 6/15/2019 <- Date present and it is in the past, push 7/29/2019 over this date. 
 Kids Class 2:  
 Kids Class 3:  
 
@@ -34,8 +39,8 @@ API Should insert these tags (for scenario 1):
 40 Saturday Class . Start
 
 API Should create/add this additional "tag" for scenario 2 (examples below)
-Farm To Table - Kids Class 
-Summer Delight - Kids Class
+Farm To Table 2020 
+Summer Delight 2020
 
 #### Fields sent via API for Kids Class  
    * First Name
