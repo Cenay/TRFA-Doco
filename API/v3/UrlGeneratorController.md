@@ -1,24 +1,48 @@
-#UrlGeneratorController
+# UrlGeneratorController
+The purpose of the URL generator is to allow a user to click a link in an email, and redirect them to the correct page, with all the parameters passed so the form completes with their prior information. The endpoint is called from ActiveCampaign, with the ID of the contact (user) and the base URL to generate for.  
 
-The purpose of URL generator contorller is to build a URL Kids/Adult parites & Field Trips url from party info inside **party field** in Active Campaign.
+>Sample Usage:  
+https://trfaapi.com/v3/util/url/kids-party/{1335} 
+Where {1335} is the contact id within ActiveCampaign 
+
+This is called when contact clicks the link in email within ActiveCampaign.  
+
+**Parameters**
+ * {class} -> Possible values: "Kids Party", "Adults Party", "Field Trips"
+ * {id} -> Contact ID from ActiveCampaign (passed as %SUBSCRIBERID%)
+ * {redirect?} _[Optional]_ -> 
+ 
+ https://trfaapi.com/v3/util/url/adults-party/1048/
+
+1. Is the base URI that ActiveCampaign passes. If it fails, the function calls #3. 
+2. The redirect link posted to the view so that contact can find the correct link in the event the "link" fails. (See image below)
+3. Old method, no longer used in current emails, left in for backwards compatibility, so that the link in the old emails does not break.  
+
 There are three routes for generating URLs.
 ```
-Route::get('/url/{class}/{id}', 'UrlGeneratorController@ajaxRedirectToUrl');
-Route::get('/party/{class}/{id}/{redirect?}', 'UrlGeneratorController@index')->name('urlGenerator');;
-Route::get('/{class}/{id}/{redirect?}', 'UrlGeneratorController@index')->name('urlOldGenerator');
-(The last endpoint is added so that the link in the old emails does not break)
+  1. Route::get('/url/{class}/{id}', 'UrlGeneratorController@ajaxRedirectToUrl');
+  2. Route::get('/party/{class}/{id}/{redirect?}', 'UrlGeneratorController@index')->name('urlGenerator');;
+  3. Route::get('/{class}/{id}/{redirect?}', 'UrlGeneratorController@index')->name('urlOldGenerator');
 ```
+_Showing the #2 Link reason_
+![URL Generator](/img/url-generator-explain-second-route.jpg)
 
-###Methods
-####ajaxRedirectToUrl
-ajaxRedirectToUrl is a simple method that just returns url generator view where we display the loader until redirected to the correct url.
 
-####index
-index methods takes 3 arguments. 
-`$class, $contactId, $redirect = null`
-`$class` define what type of class it is i.e. kids class, adult class or field trips. Based on the class name it will redirect to the method responsible to generating url for that class. For example in class of kids class flow will be redirected to `constructKidsPartyUrl` method. 
+# Methods
+Functions used by the URL Generator class.
 
-####constructKidsPartyUrl
+## ajaxRedirectToUrl
+A simple method that just returns url generator view (v3/resources/views/ajax-url-generator.blade.php) where we display the loader until redirected to the correct url. Will also provide a link to the correct URL in the event the program hangs.  
+>**RETURNS** view(ajax-url-generator)
+
+## index
+A traffic cop that directs to the correct method based on the passed parameter. It takes 3 arguments. 
+ * $class: Possible values are "kids-party", "adults-party", and "field-trips". Based on the class name it will redirect to the method responsible to generating url for that class. For example in class of kids class flow will be redirected to `constructKidsPartyUrl` method.
+ * $contactId: The ActiveCampaign subscriber ID passed to the base endpoint in the API
+ * $redirect (default = null): Internal use only. Used to determine if ajax view is used. 
+ >**RETURNS** Nothing
+
+## constructKidsPartyUrl
 This method takes two arguments `$contactId, $redirect`.
 `$contactId` is the active campaigns contact id and `$redirect` is a boolean. When it is true it will redirect the user directly to redirects url. (This was the intial approach that we implemented first and later we added a loader view because generating a url and then redirecting to it was taking some with and we wanted to give use some feedback).
 This method fetchs the details from acitve campaign by calling another method `$details = $this->getContactDetailsFromActiveCampaign($contactId, 60);`
