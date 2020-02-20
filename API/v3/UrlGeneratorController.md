@@ -1,11 +1,11 @@
 # UrlGeneratorController
-The purpose of the URL generator is to allow a user to click a link in an email, and redirect them to the correct page, with all the parameters passed so the form completes with their prior information. The endpoint is called from ActiveCampaign, with the ID of the contact (user) and the base URL to generate for.  
+In order to reconstruct the form fields on any one of the party forms, the URI needs to contain the parameters. Since most of the data is inside the "party info" field, and not inside actual fields within ActiveCampaign, a function has to extract them, and build the redirect URI that contains the parameters so the form completes with their prior information. The endpoint is called from emails sent to the contact via ActiveCampaign, with the ID of the contact and the base URL to generate for.  
 
 >Sample Usage:  
 https://trfaapi.com/v3/util/url/kids-party/{1335} 
 Where {1335} is the contact id within ActiveCampaign 
 
-This is called when contact clicks the link in email within ActiveCampaign.  
+This is called when contact clicks the link in email within ActiveCampaign inside the automation for the event they have booked.  
 
 **Parameters**
  * {class} -> Possible values: "Kids Party", "Adults Party", "Field Trips"
