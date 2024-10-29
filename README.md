@@ -1,7 +1,7 @@
-# The Real Food Acadamy Documentation
+# The Real Food Academy Documentation
 Documentation of the team assignments, procedures and policies of the TRFA organization. This repo is public so that all the non-GitHub users can access it, but should be considered private. 
 
-**DO NOT INCLUDE ANY SENSITIVE INFORMATION**
+> DO NOT INCLUDE ANY SENSITIVE INFORMATION
 
 ## Table of Contents
 We will be discussing and documenting these elements

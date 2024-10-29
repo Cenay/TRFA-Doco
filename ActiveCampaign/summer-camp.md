@@ -3,12 +3,15 @@ Bookeo ID: 40
 Bookeo Product ID: 214RPTHWK13ECCFB7002  
 Bookeo Custom Field (More Info): 214RPTHWK13ECCFB7002_93AF4X97  
 
+UPDATE: {1/5/2023}  
+New fields added to separate the Summer, Spring and Winter dates into thier own fields so the automations will be updated to reflect the changes.  
+
 ### Requirements
 The summer camp event is held each summer, and lasts about 11 weeks. Our automation's goal is to capture details about their kids (for future followup and offers), notify them of the FAQs and other info they need to have a good summer camp experience. We also will follow up after the camp to solicit feedback.  
 
 ## PROCESS
 ### Customer
- 1) The customer will start at the [TRFA site](https://therealfoodacademy.com/), on the [Summer Camp](https://therealfoodacademy.com/summer-camp/) page. (Winter Camp version is: https://therealfoodacademy.com/the-best-winter-camp-in-miami/)
+ 1) The customer will start at the [TRFA site](https://therealfoodacademy.com/), on the [Summer Camp](https://therealfoodacademy.com/summer-camp/) page. [Winter Camp](https://therealfoodacademy.com/the-best-winter-camp-in-miami/) and [Spring Break Camp](https://therealfoodacademy.com/spring-camp/) are here respectively.  
  2) Once they click the **Bookeo Book** button and "book" a week of camp, they will complete payment on the Bookeo interface (embedded into site).
  3) They will receive the email asking (from AC, see below) for more information and will complete that as well. (This is a Gravity Form which will push/update data to the ActiveCampaign contact record that matches the email address).  Note: These insertions update the Kids Info sets which include: Name, Birth Date, Allergies and More Info. There are 3 kid 'sets'. 
  4) After camp session ends, customer gets a new email from AC requesting feedback. Email they receive sends them to the [feedback](https://therealfoodacademy.com/feedback-on-kids-summer-camp/) page.
@@ -29,7 +32,7 @@ Fields sent via API for Summer Camp
    * Email
    * Person Type -> Customer  (default, every booking)
    * Phone
-   * 1st Week (unless it has a value, then 2nd week, unless it has a value, etc)
+   * Summer 1st Week (unless it has a value, then Summer 2nd week, unless it has a value, etc.)
  
 1) ActiveCampaign will respond to the "tag" event **Summer Camp . Purchased . Need Details** which the API adds 
 
@@ -39,7 +42,7 @@ https://therealfoodacademy.com/summer-camp-details/
 
 Form submission should redirect to the [FAQ page](https://therealfoodacademy.com/frequently-asked-questions/#summer-camp) for the summer camp program  
 
-We want to ask them for more info, but not require them to complete the name, email, phone fields again. If we have info on the kids, we want to procide that as well. Create a link in ActiveCampaign that pushes that data via query strings that looks like this: 
+We want to ask them for more info, but not require them to complete the name, email, phone fields again. If we have info on the kids, we want to provide that as well. Create a link in ActiveCampaign that pushes that data via query strings that looks like this: 
 
 >Summer Camp "Details" Gravity Link  
 https://therealfoodacademy.com/summer-camp-details/?first=%FIRSTNAME%&last=%LASTNAME%&email=%EMAIL%&phone=%PHONE%&name1=%NAME_1%&dob1=%BIRTH_DATE_1%&allergies1=%ALLERGIES_1%&more1=%MORE_ABOUT_1%&name2=%NAME_2%&dob2=%BIRTH_DATE_2%&allergies2=%ALLERGIES_2%&more2=%MORE_ABOUT_2%&name3=%NAME_3%&dob3=%BIRTH_DATE_3%&allergies3=%ALLERGIES_3%&more3=%MORE_ABOUT_3%
@@ -68,12 +71,16 @@ add_filter( 'gform_field_value_numKids', function ( $value ) {
 } );
 ```
 
-# Bookeo: Summer Camp / Winter Camp
->SUMMER CAMP WEEKLY $350 (id: 40)  
-SUMMER CAMP DAILY $85 (id: 90)  
+# Bookeo: Summer Camp / Winter Camp / Spring Camp  
+>SUMMER CAMP WEEKLY $575 (id: 40)  
+SUMMER CAMP DAILY $145 (id: 90)  
 
->WINTER CAMP WEEKLY $350 (id: 41 )
-WINTER CAMP DAILY $85 (id: 89)
+>WINTER CAMP WEEKLY $575 (id: 41)  
+WINTER CAMP DAILY $145 (id: 89)
+
+>SPRING CAMP WEEKLY $575 (id: 111)  
+SPRING CAMP DAILY $145 (id: 112)
+
 ---
 **Bookeo Summer Camp Weekly**  
 Product ID: 214RPTHWK13ECCFB7002  
@@ -191,28 +198,28 @@ This is the text representation of the automation steps and logic for the Summer
 
 ---
  * TRIGGER: None (must be placed in this automation)
- * TAG+: (Summer Camp 2019) <- This will need to be updated each year
- * IF/ELSE [1]: Has tag (Summer Camp 2019 . Details . Received)
+ * TAG+: (Summer Camp 2023) <- This will need to be updated each year
+ * IF/ELSE [1]: Has tag (Summer Camp 2023 . Details . Received)
    * YES PATH:
      * TAG-: (Summer Camp , Purchased . Need Details)
      * GOAL: Ready for Summer Camp Reminders
      > Goal condition:  
-    Contact has tag (Summer Camp 2019 . Details . Received) and Contact does not have tag (Summer Camp . Purchased . Need Details)
+    Contact has tag (Summer Camp 2023 . Details . Received) and Contact does not have tag (Summer Camp . Purchased . Need Details)
      * TAG+: (Summer Camp . Start Reminder Sequence)
      * FIRE: _Summer Camp / Push To Bookeo_
-     * IF/ELSE [2]: 1st Week is before current date
+     * IF/ELSE [2]: 1st Week is before current date OR Summer 1st Week is before current date
      * YES Path: 
-        * WAIT: Until 1st Week is current date
+        * WAIT: Until 1st Week is current date OR Summer 1st Week is current date
         * FIRE: _Summer Camp / Request Feedback_
         * END: -> Exit
      * NO Path:  
-        * NOTIFICATION: Send email to Cenay that we hit a situation where the 1st Week date is NOT before the current date at the time of INIT, and this should NOT be possible. 
-        * WAIT: Until 1st Week is current date (to gather the contacts)
+        * NOTIFICATION: Send email to Cenay that we hit a situation where the Summer 1st Week date is NOT before the current date at the time of INIT, and this should NOT be possible. 
+        * WAIT: Until Summer 1st Week is current date (to gather the contacts)
         FIRE: _Summer Camp / Request Feedback_ 
         * END: -> Exit
    * NO Path:
      * NOTIFICATION: Send email to Cenay, this shouldn't be possible
-     * WAIT: Until contact has tag (Summer Camp 2019 . Details . Received)
+     * WAIT: Until contact has tag (Summer Camp 2023 . Details . Received)
      * GOTO: Yes Path of IF/ELSE [1]
 
 ## Summer Camp / Push To Bookeo
